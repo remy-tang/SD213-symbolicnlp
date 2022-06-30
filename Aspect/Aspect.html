@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html><input type="hidden" id="__yoroi_connector_api_injected_type" value="prod"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Telecom Paris - JL Dessalles - Artificial Intelligence</title>
+<link rel="icon" type="image/png" href="Aspect_files/CANLP.png">
+<link rel="stylesheet" type="text/css" href="Aspect_files/CANLP.css"></head><body><div style="background:white url(Images/Fond.png) repeat fixed;">
+<p></p><p></p><p></p><p></p><p></p><p></p><table style="width:100%;border: 0px solid #0C2340;"><caption><i></i></caption><tbody><tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.telecom-paris.fr/en/home"><img style="width:400px;float: left; padding-right: 15px;" src="Aspect_files/TelecomParis_IPParis.png" alt="TelecomParis_IPParis.png"></a>
+</td>
+<td>
+<a href="https://www.telecom-paris.fr/en/home">Telecom Paris</a>
+<br>
+<a href="https://www.telecom-paris.fr/en/the-school/teaching-research-departments/computer-sciences-and-networks">Dep. Informatique &amp; Réseaux</a><p></p><a href="https://perso.telecom-paris.fr/jld/Images/Dessalles_2018.png"><img style="width:133px;float: left; padding-right: 15px;" src="Aspect_files/Dessalles_2018.png" alt="Dessalles_2018.png"></a>
+<span style="font-family:Arial;">
+<a href="https://www.dessalles.fr/">
+<span style="font-size:120%">J-L. Dessalles</span></a></span>
+← <b><span style="font-size:80%">Home page</span></b><p></p><b>juin 2022</b></td>
+</tr></tbody></table>
+<img style="width:100%;height:5px;" src="Aspect_files/Line.jpg" alt="5">
+<br>
+<a href="http://teaching.dessalles.fr/CANLP"><img style="width:200px;float: right; padding-left: 15px;" src="Aspect_files/CANLP.png" alt="CANLP.png"></a>
+<br>
+<span style="font-size:173%">
+<b>
+<br>
+<a href="https://aicourse.r2.enst.fr/CANLP">Cognitive Approach to Natural Language Processing</a> (SD213)</b></span>
+<br>
+<span style="color:#0000FF;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:120%">→</span>&nbsp;&nbsp;&nbsp;&nbsp;<b><a href="https://aicourse.r2.enst.fr/">other AI courses</a></b></span>
+<br>
+<img style="width:100%;height:5px;" src="Aspect_files/Line.jpg" alt="5"><p></p><p></p><table style="width:50%;border: 1px solid #0C2340;"><caption><i></i></caption><tbody><tr>
+<td><span style="color:brown;">
+Note: the initial version of this lab was written in French. We hope 
+that there is no misinterpretation of aspectual relations in English. 
+Please signal any problem you may notice.</span></td>
+</tr></tbody></table>
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H1').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Introduction"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual correctedness"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual switches"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Viewpoint"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H5').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Determination"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Occurrence"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Duration"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual operators"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Zoom"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H10').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Repetition"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H11').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Slicing"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H12').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Predication"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H13').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Inchoativity"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H15').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Processing Aspect"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H16').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Discovering lexical structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H17').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Discovering the grammar"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H18').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Semantic merge"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H19').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Playing with the program"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H21').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Bibliography"><br></p></div><p></p></span><div id="H1"><h3>Introduction</h3></div>
+Aspect is one of the most remarkable characteristics of the human semantic competence.
+Any attempt to build clever machines will have, sooner or later, to reverse-engineer Aspect processing.
+You may understand a sentence like:
+<p style="text-align:center">
+"Last year, when the birds flew by, the alarm went off" </p>
+as either a single event or a repetitive event (the latter is the only interpretation in French with imperfect tense: <i>L’année dernière, quand les oiseaux passaient, l’alarme se déclenchait</i>.). You might even infer a causal link between the presence of the birds and the trigerring of the alarm.
+How can machines achieve this?<p></p>The difficulty of the problem 
+should neither be overestimated nor underestimated. The purpose of this 
+lab is not to offer a definitive solution. It is rather to show that 
+aspectual competence corresponds to an <i>algorithm</i> that is waiting for being reverse-engineered, and that this algorithm might not be that complex after all.
+<div id="H2"><h2>Aspectual correctedness</h2></div>
+The following sentences are all syntactically correct, but some of them seem odd from a semantic point of view.<p></p><table style="border: 1px solid #0C2340;"><caption><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;French</i></caption><tbody><tr>
+<td><ul><li>Mary will drink the glass_of_wine<br>(= glass of wine = the content of the glass)</li>
+<li>Mary will drink the glass_of_wine in one minute</li>
+<li>Mary will drink the glass_of_wine in 2022</li>
+<li>Mary will drink the glass_of_wine during one minute</li>
+<li>Mary will drink the glass_of_wine during the show</li>
+<li>Mary will drink water </li>
+<li>Mary will drink water in one minute</li>
+<li>Mary will drink water in 2022</li>
+<li>Mary will drink water during (for) one minute</li>
+<li>Mary will drink water during the show</li>
+<li>Mary will eat </li>
+<li>Mary will eat in one minute</li>
+<li>Mary will eat in 2022</li>
+<li>Mary will eat during (for) one minute</li>
+<li>Mary will eat during the show</li>
+<li>Mary snored</li>
+<li>Mary snored in one minute</li>
+<li>Mary snored in 2010</li>
+<li>Mary snored during (for) one minute</li>
+<li>Mary snored during the show</li>
+<li>Mary liked the wine</li>
+<li>Mary liked the wine in 2010</li></ul>
+</td>
+<td>
+<ul><li>Pierre a mangé le gâteau </li>
+<li>Pierre a mangé le gâteau en une minute</li>
+<li>Pierre a mangé le gâteau en 2010</li>
+<li>Pierre a mangé le gâteau pendant une minute</li>
+<li>Pierre a mangé le gâteau pendant le spectacle</li>
+<li>Pierre a mangé du gâteau </li>
+<li>Pierre a mangé du gâteau en une minute</li>
+<li>Pierre a mangé du gâteau en 2010</li>
+<li>Pierre a mangé du gâteau pendant une minute</li>
+<li>Pierre a mangé du gâteau pendant le spectacle</li>
+<li>Pierre a mangé </li>
+<li>Pierre a mangé en une minute</li>
+<li>Pierre a mangé en 2010</li>
+<li>Pierre a mangé pendant une minute</li>
+<li>Pierre a mangé pendant le spectacle</li>
+<li>Pierre a ronflé</li>
+<li>Pierre a ronflé en une minute</li>
+<li>Pierre a ronflé en 2010</li>
+<li>Pierre a ronflé pendant une minute</li>
+<li>Pierre a ronflé pendant le spectacle</li>
+<li>Pierre aimait le gâteau</li>
+<li>Pierre aimait le gâteau en 2010</li></ul></td>
+</tr></tbody></table><p></p>The examples in English are stored in <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Sentences.pl">asp_Sentences.pl</a></span>.
+<br>
+The examples in French are stored in <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Phrases.pl">asp_Phrases.pl</a></span>.
+<br>
+ (all files are in <a href="https://aicourse.r2.enst.fr/CANLP/src/tp_aspect.zip">tp_aspect.zip</a>). 
+<br>
+Note that tense is noted using symbols such as <span class="xjlcode">_PP</span> for present perfect or <span class="xjlcode">_PRET</span> for preterite.
+<br>
+<div id="Aspect_Examples"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Aspect Examples</i></caption><tbody><tr>
+<td>
+Indicate below the sentences (if any) which, according to you, are semantically odd.
+<br>
+(select them in the language in which you feel more comfortable)</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_Aspect:Aspect_Examples" cols="80" rows="4">Pierre a mangé le gâteau pendant une minute
+Pierre a mangé du gâteau en une minute
+Pierre a mangé en 2010
+Pierre a ronflé en une minute
+Pierre aimait le gâteau en 2010</textarea><p></p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p><span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H1').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Introduction"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual correctedness"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual switches"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Viewpoint"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H5').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Determination"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Occurrence"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Duration"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual operators"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Zoom"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H10').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Repetition"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H11').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Slicing"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H12').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Predication"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H13').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Inchoativity"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H15').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Processing Aspect"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H16').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Discovering lexical structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H17').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Discovering the grammar"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H18').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Semantic merge"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H19').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Playing with the program"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H21').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Bibliography"><br></p></div><p></p></span><div id="H3"><h2>Aspectual switches</h2></div>
+Reverse-engineering aspectual processing proves quite hard. All native 
+speakers, even young ones, nevertheless deal with aspect effortlessly 
+and without errors. Recent progress has been done in this area, thanks 
+to the work of linguists and computational linguists (such as a former 
+PhD Student, <a href="http://fr.viadeo.com/fr/profile/damien.munch1">Damien Munch</a>). Fundamental concepts underlying the processing of Aspect are presented now. They take the form of <i>aspectual switches</i>.
+<div id="H4"><h3>Viewpoint</h3></div>
+You probably decided that a sentence such as "Mary will drink water in one hour" might be problematic if <i>one hour</i>
+ measures the duration of the drinking activity. The problem seems to be
+ topological by nature. Let’s use the classical open/close distinction. 
+Intuitively
+‘drinking water’ is like an open set, whereas ‘in one hour’ would 
+correspond to a closed set. Similarly, the future tense (<span class="xjlcode">FUT</span>)
+ puts the event into a closed set. Thanks to this intuition, the 
+incompatibility between "drink water" and "in one hour" makes sense.<p></p>We introduce the aspectual switch <i>viewpoint</i>, which may take two values: <span class="xjlcode">f</span> et <span class="xjlcode">g</span>. These values correspond to the notions of closed and open sets respectively, or to the notions of <i>figure</i> and <i>ground</i>, or (for linguists) the notions of <a href="https://en.wikipedia.org/wiki/Telicity">telic and atelic</a>. A <i>figure</i> is perceived as a whole, whereas a <i>ground</i> is perceived from the inside. Another way of making the distinction consists in saying that grounds are <i>self-similar</i> (part of a ground is still the same ground), but part of a figure is no longer that figure.<p></p><div id="Telicity"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Telicity</i></caption><tbody><tr>
+<td>
+Considering self-similarity, would you associate the following <u>verbs</u> rather to figures or to grounds?
+</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<span class="xjlcode">snore&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:telicity_snore" value="figure" data-com.bitwarden.browser.user-edited="yes">figure <input type="radio" name="tp_Aspect:telicity_snore" value="ground" data-com.bitwarden.browser.user-edited="yes" checked="checked">ground <input type="radio" name="tp_Aspect:telicity_snore" value="it depends">it depends
+<br>
+<span class="xjlcode">sneeze</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:telicity_sneeze" value="figure" data-com.bitwarden.browser.user-edited="yes" checked="checked">figure <input type="radio" name="tp_Aspect:telicity_sneeze" value="ground">ground <input type="radio" name="tp_Aspect:telicity_sneeze" value="it depends">it depends
+<br>
+<span class="xjlcode">remove</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:telicity_remove" value="figure" data-com.bitwarden.browser.user-edited="yes" checked="checked">figure <input type="radio" name="tp_Aspect:telicity_remove" value="ground" data-com.bitwarden.browser.user-edited="yes">ground <input type="radio" name="tp_Aspect:telicity_remove" value="it depends">it depends
+<br>
+<span class="xjlcode">walk&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:telicity_walk" value="figure">figure <input type="radio" name="tp_Aspect:telicity_walk" value="ground" data-com.bitwarden.browser.user-edited="yes" checked="checked">ground <input type="radio" name="tp_Aspect:telicity_walk" value="it depends">it depends
+<br>
+<span class="xjlcode">send&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:telicity_send" value="figure" data-com.bitwarden.browser.user-edited="yes" checked="checked">figure <input type="radio" name="tp_Aspect:telicity_send" value="ground">ground <input type="radio" name="tp_Aspect:telicity_send" value="it depends">it depends<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p><p></p><p></p>
+<br>
+<div id="H5"><h3>Determination</h3></div>
+Our second <i>aspectual switch</i> has to do with determination. Time 
+periods such as ‘next week’, ‘one week’, ‘2022’, ‘one year’ behave 
+differently. Consider the sentences:
+<ol><li>the market will collapse next week (= at some moment of next week)</li>
+<li>the market will collapse in one week (= it will take one week / after one week)</li>
+<li>the market will collapse in 2022 (= at some moment in 2022)</li>
+<li>the market will collapse in one year (= it will take one year / after one year)</li></ol>
+What is the difference, for instance, between ‘2022’ and ‘one year’?
+<br>
+Answer: the former is anchored in time, while the latter may be located anywhere.<p></p>The notion of <i>determination</i> is introduced to capture this difference. 
+We introduce the aspectual switch <i>determination</i>, which may take two values: 
+<ul><li><span class="xjlcode">d</span> (determined), for example "2022",</li>
+<li><span class="xjlcode">u</span> (undetermined), for example "one year". </li></ul>
+The interpretation of "in/during <i>p</i>" as 
+"at some moment of/in/during <i>p</i>" is only possible with a <i>determined</i> period. 
+<br>
+The implicit interpretation of "in" as meaning "after" is only possible with an <i>undetermined</i> period.<p></p><div id="Determination"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Determination</i></caption><tbody><tr>
+<td>
+Using these criteria, decide which of the following expressions should 
+be regarded as determined (try to prefix each phrase with "She died 
+during") (caveat: syntactic determination may be misleading).</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<span class="xjlcode">the exhibition</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:determ_theexhibition" value="determined" data-com.bitwarden.browser.user-edited="yes" checked="checked">determined <input type="radio" name="tp_Aspect:determ_theexhibition" value="undetermined">undetermined <input type="radio" name="tp_Aspect:determ_theexhibition" value="None">None
+<br>
+<span class="xjlcode">an exhibition&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:determ_anexhibition" value="determined">determined <input type="radio" name="tp_Aspect:determ_anexhibition" value="undetermined" data-com.bitwarden.browser.user-edited="yes" checked="checked">undetermined <input type="radio" name="tp_Aspect:determ_anexhibition" value="None">None
+<br>
+<span class="xjlcode">a day&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:determ_aday" value="determined">determined <input type="radio" name="tp_Aspect:determ_aday" value="undetermined" data-com.bitwarden.browser.user-edited="yes" checked="checked">undetermined <input type="radio" name="tp_Aspect:determ_aday" value="None">None
+<br>
+<span class="xjlcode">that day&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:determ_thatday" value="determined" data-com.bitwarden.browser.user-edited="yes" checked="checked">determined <input type="radio" name="tp_Aspect:determ_thatday" value="undetermined">undetermined <input type="radio" name="tp_Aspect:determ_thatday" value="None">None<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p><p></p><p></p><div id="H6"><h3>Occurrence</h3></div>
+The <span class="xjlcode">Occ</span> switch may take two values: <span class="xjlcode">sing</span> or <span class="xjlcode">mult</span>. It indicates that the event is consider to occur once or several times.
+<div id="H7"><h3>Duration</h3></div>
+Much of aspectual processing is triggered by duration conflicts. For instance in:
+<ul><li>She will marry in 2022.</li>
+<li>She will use her bike in 2022.</li></ul>
+there is a mismatch between the duration of the event (to marry, to use a
+ bike) and the duration of the time frame (a year).
+This triggers futher processing, such as slicing in the first case (at 
+some moment in 2022) or repetition in the second case (several times in 
+2022)<p></p>Typical durations are stored in the lexicon (we know that a 
+typical meal lasts for about one hour). In the implementation, durations
+ are stored in the feature <span class="xjlcode">dur</span> as <span class="xjlmath"><i></i>log<i></i><sub>10</sub><i></i>(<i></i>&lt;<i>duration&nbsp;in&nbsp;seconds</i>&gt;<i></i>)<i></i></span>. For instance, <span class="xjlcode">dur:1</span> means that the event typically lasts for 10 seconds.<p></p>The <span class="xjlcode">duration</span> feature may behave like a genuine aspectual switch, as some operations (<a href="https://aicourse.r2.enst.fr/CANLP/slicing">slicing</a> and <a href="https://aicourse.r2.enst.fr/CANLP/predication">predication</a>) generate events that lack duration.
+For instance, <i>She drank alcohol!</i> (in a context in which the fact was unexpected/wished/feared) loses its durativity. Similarly, <i>at some point in 2022</i> has no duration either. These periods aremarked using a <span class="xjlcode">nil</span> duration marker, for instance: <span class="xjlcode">dur:nil(0.3)</span>.
+The <i>duration</i> aspectual switch prevents durative events from being matched with non-durative ones. However, in <i>She drank alcohol in 2022</i>, both <span class="xjlcode">nil</span> durations can be matched.
+<div id="operators"></div>
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H1').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Introduction"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual correctedness"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual switches"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Viewpoint"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H5').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Determination"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Occurrence"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Duration"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual operators"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Zoom"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H10').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Repetition"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H11').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Slicing"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H12').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Predication"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H13').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Inchoativity"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H15').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Processing Aspect"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H16').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Discovering lexical structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H17').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Discovering the grammar"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H18').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Semantic merge"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H19').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Playing with the program"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H21').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Bibliography"><br></p></div><p></p></span><div id="H8"><h2>Aspectual operators</h2></div>
+Phenomena like <i>aspectual coercion</i> (see <a href="#Biblio">bibliography</a>) reveal that aspect may be changed dynamically through at least four unary operators: <span class="xjlcode">zoom</span>, <span class="xjlcode">repeat</span>, <span class="xjlcode">slice</span>, <span class="xjlcode">predication</span>. Let’s consider them in turn.
+<div id="zoom"></div>
+<div id="H9"><h3>Zoom</h3></div>
+The effect of <span class="xjlcode">zoom</span> is to transform a <span class="xjlcode">f</span> into a <span class="xjlcode">g</span>.
+<br>
+<table style="center;margin-left:auto;margin-right:auto;border: 1px solid #0C2340;background-color:#FFF8A7;"><caption><i>zoom</i></caption><tbody><tr>
+<td><span class="xjlcode">dp vwp:<span style="color:red;">f</span> occ:sing dur:&lt;number&gt;</span>
+</td>
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:120%">→</span>&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+<span class="xjlcode">dp vwp:<span style="color:red;">g</span> occ:sing dur:&lt;number&gt;</span></td>
+</tr></tbody></table>
+<br>
+In the implementation, this operator applies only to determiner phrases (<span class="xjlcode">dp</span>).
+<div id="repetition"></div>
+<div id="H10"><h3>Repetition</h3></div>
+Consider sentences like:
+<ol><li>When Mary was building the wall, Peter was sick.<br><i>Quand Marie construisait le mur, Pierre était malade.</i></li>
+<li>When Mary was building the wall, Peter was cooking.<br><i>Quand Marie construisait le mur, Pierre faisait la cuisine.</i></li></ol>
+In 2, we tend to consider that Peter cooked several times. This comes 
+from the fact that there is a mismatch between the duration of 
+wall-building (one week or more, typically) and the duration of cooking 
+(about one hour).<p></p>We introduce the dynamic aspectual operator <i>repetition</i>. Its first effect is to change a figure <span class="xjlcode">f</span>, once repeated, into a ground <span class="xjlcode">g</span>. The second effect of repetition is to change the value of the <span class="xjlcode">occ</span> switch from <span class="xjlcode">sing</span> to <span class="xjlcode">mult</span>.
+<br>
+<table style="center;margin-left:auto;margin-right:auto;border: 1px solid #0C2340;background-color:#FFF8A7;"><caption><i>repetition</i></caption><tbody><tr>
+<td><span class="xjlcode">vpt vwp:<span style="color:red;">f</span> occ:<span style="color:red;">sing</span> dur:D</span>
+</td>
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:120%">→</span>&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+<span class="xjlcode">vpt vwp:<span style="color:red;">g</span> occ:<span style="color:red;">mult</span> dur:min(D)</span></td>
+</tr></tbody></table>
+<br>
+Note that in the implementation, repetition affects only <span class="xjlcode">vpt</span> (i.e. a verb phrase possibly followed by a prepositional phrase (<span class="xjlcode">vp [+ pp]</span>)). The mention <span class="xjlcode">dur:min(D)</span> is used to force the repetition to last longer than the repeated event.
+<div id="Repetition"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Repetition</i></caption><tbody><tr>
+<td>
+Which examples among the following <i>may</i> reasonably receive a repetitive interpretation?</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="checkbox" name="tp_Aspect:Repetition_talk" value="&nbsp;&nbsp;&nbsp;&nbsp;She looked at her watch during the meeting">&nbsp;&nbsp;&nbsp;&nbsp;She looked at her watch during the meeting
+<br>
+<input type="checkbox" name="tp_Aspect:Repetition_visit" value="&nbsp;&nbsp;&nbsp;&nbsp;She will visit him before he leaves">&nbsp;&nbsp;&nbsp;&nbsp;She will visit him before he leaves
+<br>
+<input type="checkbox" name="tp_Aspect:Repetition_carrots" value="&nbsp;&nbsp;&nbsp;&nbsp;He will buy carrots while she is parking">&nbsp;&nbsp;&nbsp;&nbsp;He will buy carrots while she is parking<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p><p></p>
+<div id="slicing"></div>
+<div id="H11"><h3>Slicing</h3></div>
+A sentence like:
+<br>
+<ul><li>She will marry in 2022</li></ul>
+is interpreted as the fact that she will marry some day in 2022. The 
+durative interpretation is blocked by the fact that a wedding cannot 
+last one year (compare with "she will be sick in 2022") and that one 
+usually does not marry several times in the same year (compare with "she
+ will use her bike in 2022"). The idea of "at some moment in 2022" or 
+"some day in 2022" presupposes that 2022 has been transformed into a 
+temporal slice of itself.<p></p>We introduce the dynamic operator <i>slice</i> that transforms a determined durative period into a singular non-durative figure.
+<br>
+<table style="center;margin-left:auto;margin-right:auto;border: 1px solid #0C2340;background-color:#FFF8A7;"><caption><i>slicing</i></caption><tbody><tr>
+<td><span class="xjlcode">pp vwp:f occ:sing dur:D</span>
+</td>
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:120%">→</span>&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+<span class="xjlcode">pp vwp:f occ:sing dur:<span style="color:red;">nil(D)</span></span></td>
+</tr></tbody></table>
+<br>
+In the implementation, only temporal complements (<span class="xjlcode">pp</span>) can be sliced. Note the use of <span class="xjlcode">nil</span> to indicate that a slice has no duration.
+<div id="Slices"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Slices</i></caption><tbody><tr>
+<td>
+Which examples among the following is likely to involve a slice?</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="checkbox" name="tp_Aspect:Slices_phone" value="&nbsp;&nbsp;&nbsp;&nbsp;Her phone rang during the show">&nbsp;&nbsp;&nbsp;&nbsp;Her phone rang during the show
+<br>
+<input type="checkbox" name="tp_Aspect:Slices_happy" value="&nbsp;&nbsp;&nbsp;&nbsp;She was happy during these years">&nbsp;&nbsp;&nbsp;&nbsp;She was happy during these years
+<br>
+<input type="checkbox" name="tp_Aspect:Slices_photos" value="&nbsp;&nbsp;&nbsp;&nbsp;She took dozens of photos during the walk">&nbsp;&nbsp;&nbsp;&nbsp;She took dozens of photos during the walk<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p><p></p>
+<div id="predication"></div>
+<div id="H12"><h3>Predication</h3></div>
+Our fourth <i>aspectual operator</i> is predication. 
+Predication lies ‘at the top’ of linguistic expression. It could be said
+ that the purpose of most sentences is to produce a predicate that will 
+receive an attitude (the <i>point</i> of the sentence).
+"Peter likes Mary" translates easily into <span class="xjlcode">like(Peter, Mary)</span> (we assume here that a convenient predicate <span class="xjlcode">like</span> is sitting in semantic knowledge, ready to be associated with the word "like"). <p></p>Consider
+ the situation described by "drink water". One may imagine that the 
+drinking action proceeds through time, lasting about, say, 4 seconds. If
+ the relevance of the situation is due to the fact that it is opposed to
+ "drink alcohol", then it loses its temporal nature. In such a context, 
+"to drink water" may mean "not to drink alcohol". Predication comes with
+ an implicit <u>attitude</u> and an implicit <i>negation</i>. If you say "she will dress in brown", the predication of "dressed in brown" comes with the presupposition that her <i>not</i>
+ dressing in brown was (un)expected/wished/feared. Same thing for "She 
+will be dressed!" (as opposed, for example, to the 
+feared/wished/expected event "She will show up naked").<p></p>We introduce a dynamic aspectual operator <i>predication</i> that may apply to certain phrases.
+Here, predication will be indicated by an exclamation mark.
+<br>
+Consider the difference between:
+&nbsp;&nbsp;&nbsp;&nbsp;<ol><li>&nbsp;&nbsp;&nbsp;&nbsp;she will (snore during the show)!</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;she will (snore)! during the show</li></ol>
+In 1, predication concerns the whole phrase "snore during the show", while in 2, only the verb is predicated.<p></p>One effect of predication is to convert events into non-durative singular figures (<span class="xjlcode">f</span>). 
+<br>
+<table style="center;margin-left:auto;margin-right:auto;border: 1px solid #0C2340;background-color:#FFF8A7;"><caption><i>predication</i></caption><tbody><tr>
+<td><span class="xjlcode">vpt dur:D</span>
+</td>
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:120%">→</span>&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+<span class="xjlcode">vpt vwp:<span style="color:red;">f</span> det:<span style="color:red;">d</span> dur:<span style="color:red;">nil(D)</span></span></td>
+</tr></tbody></table>
+<br>
+In the implementation, predication affects only <span class="xjlcode">vpt</span> (i.e. a verb phrase possibly followed by a prepositional phrase (<span class="xjlcode">vp [+ pp]</span>)). 
+<div id="Predication_1"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Predication (1)</i></caption><tbody><tr>
+<td>
+In the sentence:<ul><li>she will (snore during the show)!&nbsp;&nbsp;&nbsp;&nbsp;...</li></ul></td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="radio" name="tp_Aspect:Predication_1" value="’snore’ turns out to be a figure and ‘during the show’ turns out to be a figure">’snore’ turns out to be a figure and ‘during the show’ turns out to be a figure
+<br>
+<input type="radio" name="tp_Aspect:Predication_1" value="’snore’ turns out to be a figure and ‘during the show’ turns out to be a ground">’snore’ turns out to be a figure and ‘during the show’ turns out to be a ground
+<br>
+<input type="radio" name="tp_Aspect:Predication_1" value="’snore’ turns out to be a ground and ‘during the show’ turns out to be a figure">’snore’ turns out to be a ground and ‘during the show’ turns out to be a figure
+<br>
+<input type="radio" name="tp_Aspect:Predication_1" value="’snore’ turns out to be a ground and ‘during the show’ turns out to be a ground">’snore’ turns out to be a ground and ‘during the show’ turns out to be a ground<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p>
+<div id="Predication_2"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Predication (2)</i></caption><tbody><tr>
+<td>
+In the sentence:<ul><li>she will (snore)! during the show&nbsp;&nbsp;&nbsp;&nbsp;...</li></ul></td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="radio" name="tp_Aspect:Predication_2" value="’snore’ turns out to be a figure and ‘during the show’ turns out to be a figure">’snore’ turns out to be a figure and ‘during the show’ turns out to be a figure
+<br>
+<input type="radio" name="tp_Aspect:Predication_2" value="’snore’ turns out to be a figure and ‘during the show’ turns out to be a ground">’snore’ turns out to be a figure and ‘during the show’ turns out to be a ground
+<br>
+<input type="radio" name="tp_Aspect:Predication_2" value="’snore’ turns out to be a ground and ‘during the show’ turns out to be a figure">’snore’ turns out to be a ground and ‘during the show’ turns out to be a figure
+<br>
+<input type="radio" name="tp_Aspect:Predication_2" value="’snore’ turns out to be a ground and ‘during the show’ turns out to be a ground">’snore’ turns out to be a ground and ‘during the show’ turns out to be a ground<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p>
+<div id="inchoativity"></div>
+<div id="H13"><h3>Inchoativity</h3></div>
+Some sentences have a strange behaviour. For instance:
+<ul><li>She will eat soup in two minutes and 30 seconds</li></ul>
+seems odd at first reading. ‘Eating soup’ is a ground; it cannot be assigned to a delimited period of time (figure).
+<br>
+Then, an admissible interpretation pops up: that she will <i>start</i> eating soup <i>after</i> two minutes and 30 seconds. 
+<br>
+To account for this behaviour, we introduce a dynamic aspectual operator, <i>inchoativity</i>, that may transform an <u>undetermined durative</u>
+ figure into a determined figure that is suppose to start after the 
+initial one. In other words, the period is changed into its own end.
+<div id="H14"><h4>Suggestion</h4></div>
+Implement inchoativity.
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H1').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Introduction"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual correctedness"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual switches"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Viewpoint"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H5').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Determination"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Occurrence"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Duration"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual operators"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Zoom"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H10').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Repetition"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H11').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Slicing"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H12').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Predication"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H13').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Inchoativity"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H15').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Processing Aspect"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H16').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Discovering lexical structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H17').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Discovering the grammar"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H18').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Semantic merge"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:61%" onclick="document.getElementById('H19').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• Playing with the program"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H21').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Bibliography"><br></p></div><p></p></span><div id="H15"><h2>Processing Aspect</h2></div>
+Two implementations are proposed here, one in Prolog and the other in Python.
+Both yield roughly the same results. The Python version reads two prolog files, the lexicon file <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Lexicon.pl">asp_Lexicon.pl</a></span> and the grammar file <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Grammar.pl">asp_Grammar.pl</a></span>.
+<br>
+(all files are in <a href="https://aicourse.r2.enst.fr/CANLP/src/tp_aspect.zip">tp_aspect.zip</a>). 
+<div id="H16"><h3>Discovering lexical structures</h3></div>
+Observe the small lexicon in <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Lexicon.pl">Lexicon.pl</a></span>. As you can see, ‘eat’ has several definitions that differ (in part) by their syntactic category. For instance, 
+<br>
+<span class="xjlcode"><br>lexicon(eat, vp, [vwp:f, im:eat_meal, dur:3.5]).</span><p></p>Here, <span class="xjlcode">vp</span> means that the verb can be seen as a verb phrase on its own and does not expect any complement.<p></p>The feature <span class="xjlcode">vwp</span> means viewpoint. Its value may be <span class="xjlcode">f</span> (figure) or <span class="xjlcode">g</span> (ground).<p></p>The feature <span class="xjlcode">im</span>
+ stands for ‘image’. It would ideally refer to some perceptive 
+representation of the scene. Here, it will just consist of a nested 
+textual labels. <p></p>The feature <span class="xjlcode">dur</span> 
+represents typical duration (when applicable) as a 10-base logarithm in 
+second units. For instance, a duration of one hour is represented by 
+3.6, since 10<sup>3.6</sup> ≈ 4000. <p></p><div id="Lexicon"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Lexicon</i></caption><tbody><tr>
+<td>
+Introduce new lexical entries for ‘draw’
+(two meanings: one for drawing something, <i>e.g.</i> a circle, and the other one for drawing as an activity.) Don’t forget to indicate duration, viewpoint and image.
+Copy your lexical entries below.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_Aspect:Lexicon" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p><div id="H17"><h3>Discovering the grammar</h3></div>
+Observe now the small grammar <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Grammar.pl">asp_Grammar.pl</a></span> that is used to parse our examples. It is expressed using simple DCG rules. For instance:<p></p><span class="xjlcode"><br>vpt --&gt; vp, pp.</span><p></p>This rule means that a <span class="xjlcode">vpt</span> is a verb phrase <span class="xjlcode">vp</span> followed by a prepositional phrase <span class="xjlcode">pp</span>.
+<br>
+Note that the grammar is binary (no more than two items on the 
+right-hand side of rules). This is meant to represent the action of the 
+syntactic <i>merge</i> operation. 
+<br>
+Note also the use of <span class="xjlcode">ip</span> (inflection phrase), of <span class="xjlcode">tp</span> (tense phrase) and of <span class="xjlcode">dp</span> (determiner phrase), in accordance with modern linguistics.
+<div id="H18"><h3>Semantic merge</h3></div>
+The most central component of the program is the "semantic merge", which
+ is triggered whenever two phrases are syntactically merged. The basic 
+semantic merge consists of matching the feature structures of the two 
+merged phrases.
+<br>
+Consider for instance the prepositional phrase <i>in ten minutes</i>.
+<br>
+The preposition <i>in</i> corresponds to the feature structure <span class="xjlcode">[vwp:f]</span>.
+<br>
+The phrase <i>ten minutes</i> corresponds to the feature structure 
+<span class="xjlcode">[vwp:f,det:u,im:10(minute),dur:2]</span>.
+<br>
+You can see that both structures match by executing the Prolog program <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Main.pl">asp_Main.pl</a></span> or the Python program <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Main.txt" download="asp_Main.py" target="_blank"><span class="xjlcode">asp_Main.py</span></a>.<p></p>In prolog:
+<span class="xjlcode"><br>?- test(pp).<br>---&gt; in ten minutes<br>The sentence is correct  [pp([vwp:f, det:u, im:10(minute),dur:2])] </span><p></p>In Python:
+<span class="xjlcode"><br>Sentence &gt; in ten minutes<br>Correct!<br>pp(pp): (vwp:f, det:u, im:'10'_minute, dur:2.0)</span><p></p>The merging of structures is found in <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Merge.pl">asp_Merge.pl</a> (<span class="xjlcode">matchFS</span>) or in <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Lexicon.txt" download="asp_Lexicon.py" target="_blank"><span class="xjlcode">asp_Lexicon.py</span></a> (<span class="xjlcode">FeatureStructure.merge</span>). 
+<br>
+Viewpoint, determination, multiplicity) are merged based on identity 
+through unification. Duration is merged by checking duration 
+compatibility. <p></p><p style="text-align:center"><img style="width:640px;" src="Aspect_files/aspect.png" alt="aspect.png"></p>
+<br>
+Semantic merge is not limited to mere feature matching. The "intelligent" part of aspectual processing lies in the set of <a href="#operators">aspectual operators</a> (repeat, slice, predication...). These operators are implemented as "rescue" operations. <p></p>In Prolog, the <span class="xjlcode">rescue</span> procedure is found in <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Merge.pl">asp_Merge.pl</a>. It is called repeatedly at each backtrack.
+<br>
+In Python, the <span class="xjlcode">rescue</span> procedure is in <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Lexicon.txt" download="asp_Lexicon.py" target="_blank"><span class="xjlcode">asp_Lexicon.py</span></a> as a method in the class <span class="xjlcode">WordEntry</span>. 
+<br>
+The point of <span class="xjlcode">rescue</span> is to transform the 
+aspectual representation of the current frame through slicing, 
+repetition or predication when applicable. Note that the applicability 
+of operators depends on the syntactic category (e.g. only <span class="xjlcode">pp</span> can be sliced).
+<div id="H19"><h3>Playing with the program</h3></div>
+Execute the program by running <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Main.pl">asp_Main.pl</a></span> or <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Main.txt" download="asp_Main.py" target="_blank"><span class="xjlcode">asp_Main.py</span></a>. <p></p><div class="exo">To run the program on French sentences, open <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Main.pl">asp_Main.pl</a></span> and comment/uncomment the two first lines to change the language. 
+<br>
+In Python, comment/uncomment two lines in the main procedure of <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Main.txt" download="asp_Main.py" target="_blank"><span class="xjlcode">asp_Main.py</span></a>.
+<br>
+This will load <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Lexique.pl">asp_Lexique.pl</a></span> instead of <span class="xjlcode">asp_Lexicon.pl</span> and <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Phrases.pl">asp_Phrases.pl</a></span> instead of <span class="xjlcode">asp_Sentences.pl</span>. </div>
+<br>
+At this point, the program correctly interprets some sentences. The 
+interpretation of examples is given as a kind of paraphrase. For 
+instance, in Prolog:
+<br>
+<span class="xjlcode"><br>?- test.<br>Sentence ---&gt;  Mary will drink the glass_of_wine<br><br> == Ok.  f.d     [occ:sing, dur:0.9] ---&gt; in the future Mary ingest this glass_of_wine</span><p></p>and in Python (no paraphrase in Python):
+<br>
+<span class="xjlcode"><br>Sentence &gt;  Mary will drink the glass_of_wine<br>Correct!<br>__ ip(ip): (vwp:f, det:d, occ:sing, im:'Mary'_future_ingest_this_glass_of_wine, dur:0.9)</span><p></p>Now test <i>drink the glass_of_wine in one minute</i>. In Prolog, you have to call:
+<br>
+<span class="xjlcode"><br>?- test(vpt).<br>Sentence ---&gt;  drink the glass_of_wine in one minute</span>
+and you have to press <span class="xjlcode">;</span> (semicolon) after <span class="xjlcode">true</span> to get all interpretations.
+<br>
+<div id="Will_Drink_1"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Will Drink (1)</i></caption><tbody><tr>
+<td>
+You should get two interpretations for <i>drink the glass_of_wine in one minute</i>.
+<br>
+Which aspectual operator is involved in this difference of interpretation?</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="radio" name="tp_Aspect:Will_Drink_1" value="zoom">zoom&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:Will_Drink_1" value="slicing">slicing
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_1" value="predication">predication&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:Will_Drink_1" value="repetition">repetition
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_1" value="inchoativity">inchoativity&nbsp;&nbsp;&nbsp;&nbsp;<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p>
+<br>
+<div id="Will_Drink_2"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Will Drink (2)</i></caption><tbody><tr>
+<td>
+Consider the sentence (in Prolog, simply type <span class="xjlcode">test.</span> to test a sentence):
+<span class="xjlcode"><br>Mary _PRES drink the glass_of_wine</span>
+<br>
+You should get only one interpretation.
+<br>
+Which aspectual operator did apply here?</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="radio" name="tp_Aspect:Will_Drink_2" value="zoom">zoom&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:Will_Drink_2" value="slicing">slicing
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_2" value="predication">predication&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="tp_Aspect:Will_Drink_2" value="repetition">repetition
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_2" value="inchoativity">inchoativity&nbsp;&nbsp;&nbsp;&nbsp;<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p>
+Let’s replace wine by water. Try the sentence <span class="xjlcode">Mary will drink water during one minute</span>. You shouldn’t get any interpretation. 
+<br>
+Why does this sentence get rejected? If we try the following:<p></p><span class="xjlcode">?- test(vpt).</span>
+(in Python, just type-in the phrase).
+<span class="xjlcode"><br>Phrase of type vpt ---&gt;  drink water during one minute<br>== Ok.  g.u     [occ:sing,dur:0.9] ---&gt; drink_some zoom 1 minute water</span><p></p>we get a correct interpretation of the phrase as a <i>ground</i> (<span class="xjlcode">g</span>). 
+<br>
+If we look at the definition of <span class="xjlcode">will</span> in <span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Lexicon.pl">Lexicon.pl</a></span>, we can see that it corresponds to a <i>figure</i> <span class="xjlcode">f</span> and a determined period <span class="xjlcode">d</span>:
+<br>
+<span class="xjlcode"><br>lexicon('will', t, [op:sep, vwp:f, det:d, im:future]).</span><p></p>This explains the mismatch. 
+<br>
+Yet, we feel that <span class="xjlcode">Mary will drink water during one minute</span>
+ should receive some kind of interpretation. If you think about it, you 
+will observe that it is only true if "drink water during one minute" can
+ be regarded as unexpected/wished/feared (<i>e.g.</i> if it is a feat / 
+if Mary does not drink enough / if there is not enough water for all). 
+In other words, the sentence is acceptable is "drink water during one 
+minute" translates into a predicate that receives an attitude. As such 
+it loses its temporality.<p></p>Open <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Merge.pl">asp_Merge.pl</a> and uncomment the last <span class="xjlcode">rescue0</span> clause (the one that involves predication). 
+<br>
+In Python, augment the list of operators as asked in <span class="xjlcode">WordEntry.rescue</span> in <a href="https://aicourse.r2.enst.fr/CANLP/src/asp_Lexicon.txt" download="asp_Lexicon.py" target="_blank"><span class="xjlcode">asp_Lexicon.py</span></a>.
+<br>
+Now, the program is able to assign an attitude to <span class="xjlcode">vpt</span> through the predication operation. Predication is indicated as <span class="xjlcode">(...)!</span> in the output. Now we get several interpretations for the phrase <span class="xjlcode">drink water during one minute</span>, including<p></p><span class="xjlcode"><br>?- test(vpt).<br>Phrase of type vpt ---&gt;  drink water during one minute<br>== Ok.  g.u     [occ:sing,dur:0.9] ---&gt; drink_some zoom 1 minute water <br>true ;<br><br>== Ok.  f.d     [occ:sing,dur:nil(0.9)] ---&gt;    (drink_some zoom 1 minute water)!<br>true</span>
+<br>
+<div id="Will_Drink_3"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Will Drink (3)</i></caption><tbody><tr>
+<td>
+Test the sentence "Mary will drink water during one minute" and verify that it now receives some interpretations. Why is it so?</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="radio" name="tp_Aspect:Will_Drink_3" value="Because predication cancels durativity and matches the future tense">Because predication cancels durativity and matches the future tense
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_3" value="Because predication cancels durativity and allows matching with ‘one minute’">Because predication cancels durativity and allows matching with ‘one minute’
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_3" value="Because predication generates a figure that matches the future tense">Because predication generates a figure that matches the future tense<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p>
+Before enabling predication, a sentence like <span class="xjlcode">Mary will drink water</span> was rejected. Now that we have predication, it is accepted in two forms, the first one being: <span class="xjlcode">[vwp:f, det:d, occ:_2150,dur:nil(0.9)] ---&gt;   in the future Mary (drink_some water)!</span>. 
+<div id="Will_Drink_4"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Will Drink (4)</i></caption><tbody><tr>
+<td>
+Try the sentence <i>Mary will drink water in 2028</i>. 
+<br>
+It is rejected. Why?</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="radio" name="tp_Aspect:Will_Drink_4" value="Because of a viewpoint mismatch">Because of a viewpoint mismatch
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_4" value="Because of a determination mismatch">Because of a determination mismatch
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_4" value="Because of a viewpoint and a determination mismatch">Because of a viewpoint and a determination mismatch
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_4" value="Because of a duration mismatch">Because of a duration mismatch
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_4" value="Because of a multiplicity mismatch">Because of a multiplicity mismatch
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_4" value="None of the above">None of the above<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p>
+To get the sentence <i>Mary will drink water in 2028</i> accepted, visit again the source to enable the <span class="xjlcode">slice</span> rescue operation. In Prolog, suppress the <span class="xjlcode">fail,</span> line in the clause of <span class="xjlcode">slice</span>. In Python, add ‘slice’ to the list of rescue operators, as you did for predication.
+<div id="Will_Drink_5"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Will Drink (5)</i></caption><tbody><tr>
+<td>
+Why is the sentence <i>Mary will drink water in 2028</i> now accepted?
+<br>
+(you may analyze the <span class="xjlcode">pp</span> phrase <i>in 2028</i> and see that there is a new alternative (type <span class="xjlcode">test(pp).</span> in Prolog))</td>
+</tr></tbody></table>
+<br>
+<form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="radio" name="tp_Aspect:Will_Drink_5" value="Because a sliced period matches any duration">Because a sliced period matches any duration
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_5" value="Because a sliced period matches any shorter duration">Because a sliced period matches any shorter duration
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_5" value="Because a sliced period matches any longer duration">Because a sliced period matches any longer duration
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_5" value="Because a sliced period matches any nil duration">Because a sliced period matches any nil duration
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_5" value="Because a sliced period matches any shorter nil duration">Because a sliced period matches any shorter nil duration
+<br>
+<input type="radio" name="tp_Aspect:Will_Drink_5" value="Because a sliced period matches any longer nil duration">Because a sliced period matches any longer nil duration<p><button type="submit" value="tp_Aspect" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></p></form></div></div><p></p>
+<br>
+You may try to introduce new lexical words (as you did with ‘draw') and 
+new aspectual words such as ‘after’, try sentences with imperfect tense,
+ explore sentences in French, implement lexicon and grammar from another
+ language, and so on. Note that you can adapt the trace level to see 
+more detail.
+<div id="H20"><h4>Suggestion</h4></div>
+&nbsp;&nbsp;&nbsp;&nbsp;This implementation of aspectual processing is 
+provided as an illustration. It is not yet perfect and it is not 
+complete. You may want to improve it on some aspects (no pun intended).
+<div id="Biblio"></div>
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual correctedness"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual switches"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Aspectual operators"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H15').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Processing Aspect"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H21').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Bibliography"><br></p></div><p></p></span><div id="H21"><h2>Bibliography</h2></div>
+<ul><li>Dölling, J. (2014). <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.433.2797&amp;rep=rep1&amp;type=pdf" target="_blank">Aspectual coercion and eventuality structure</a>. In K. Robering (Ed.), <i>Events, arguments, and aspects: Topics in the semantics of verbs</i>, 189-226. John Benjamins Publishing Company.</li>
+<li>Munch, D. &amp; Dessalles, J.-L. (2014). <a href="https://mindmodeling.org/cogsci2014/papers/370/" target="_blank">Assessing Parsimony in Models of Aspect</a>. In P. Bello, M. Guarini, M. McShane &amp; B. Scassellati (Eds.), <i>Proceedings of the 36th Annual Conference of the Cognitive Science Society</i>, 2121-2126. Austin, TX: Cognitive Science Society. </li>
+<li>Pulman, S. G. (1997). <a href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/1467-968X.00020?casa_token=yVmNZZsCbv0AAAAA:pkT-C5jlW7cdrc1ZdKHpRX23W6PYET1hX0wpT4bBgLn0_0A28CvRSLBW0Foyv0RDW94dRTFhKAaM-uGw" target="_blank">Aspectual shift as type coercion</a>. <i>Transactions of the Philological Society</i>, <i>95</i> (2), 279-317.</li></ul><p></p>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;
+ <p></p><p></p><img style="width:100%;" src="Aspect_files/Line.jpg" alt="Line.jpg"><p></p> <b><a href="https://aicourse.r2.enst.fr/CANLP/CANLP.html#topics">Back to main page</a></b>
+ <p></p>&nbsp;&nbsp;&nbsp;&nbsp;<p></p>&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+</div></body></html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html><input type="hidden" id="__yoroi_connector_api_injected_type" value="prod"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Telecom Paris - JL Dessalles - Artificial Intelligence</title>
+<link rel="icon" type="image/png" href="Semantics_files/CANLP.png">
+<link rel="stylesheet" type="text/css" href="Semantics_files/CANLP.css"></head><body><div style="background:white url(Images/Fond.png) repeat fixed;">
+<p></p><p></p><p></p><p></p><p></p><p></p><table style="width:100%;border: 0px solid #0C2340;"><caption><i></i></caption><tbody><tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.telecom-paris.fr/en/home"><img style="width:400px;float: left; padding-right: 15px;" src="Semantics_files/TelecomParis_IPParis.png" alt="TelecomParis_IPParis.png"></a>
+</td>
+<td>
+<a href="https://www.telecom-paris.fr/en/home">Telecom Paris</a>
+<br>
+<a href="https://www.telecom-paris.fr/en/the-school/teaching-research-departments/computer-sciences-and-networks">Dep. Informatique &amp; Réseaux</a><p></p><a href="https://perso.telecom-paris.fr/jld/Images/Dessalles_2018.png"><img style="width:133px;float: left; padding-right: 15px;" src="Semantics_files/Dessalles_2018.png" alt="Dessalles_2018.png"></a>
+<span style="font-family:Arial;">
+<a href="https://www.dessalles.fr/">
+<span style="font-size:120%">J-L. Dessalles</span></a></span>
+← <b><span style="font-size:80%">Home page</span></b><p></p><b>mai 2022</b></td>
+</tr></tbody></table>
+<img style="width:100%;height:5px;" src="Semantics_files/Line.jpg" alt="5">
+<br>
+<a href="http://teaching.dessalles.fr/CANLP"><img style="width:200px;float: right; padding-left: 15px;" src="Semantics_files/CANLP.png" alt="CANLP.png"></a>
+<br>
+<span style="font-size:173%">
+<b>
+<br>
+<a href="https://aicourse.r2.enst.fr/CANLP">Cognitive Approach to Natural Language Processing</a> (SD213)</b></span>
+<br>
+<span style="color:#0000FF;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:120%">→</span>&nbsp;&nbsp;&nbsp;&nbsp;<b><a href="https://aicourse.r2.enst.fr/">other AI courses</a></b></span>
+<br>
+<img style="width:100%;height:5px;" src="Semantics_files/Line.jpg" alt="5"><p></p><p></p><div id="H1"><h1>Procedural semantics</h1></div>
+<div class="slideshow" id="Procedural_Semantics">
+<section class="center">
+<p style="text-align:center">
+<span class="highlight">
+<span style="font-size:80%">
+Cognitive Approach to NLP</span></span>
+</p><p></p>&nbsp;&nbsp;&nbsp;&nbsp;<p></p><p style="text-align:center">
+<span style="font-size:173%">
+Introduction to Procedural Semantics</span></p><p></p>&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<p style="text-align:center"><span style="font-size:80%">&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+<p style="text-align:center"><span style="font-size:64%"><a href="http://teaching.dessalles.fr/CANLP">teaching.dessalles.fr/CANLP</a></span></p></section>
+<section class="center">
+Many sentences make sense out of context, or within a reasonable "average" context.<p></p>This is why machine translation seems so efficient.
+<p style="text-align:center">
+<span style="font-size:64%">
+<span style="color:brown;">
+<i>
+La vanille est une épice constituée par le fruit de certaines orchidées lianescentes tropicales</i></span></span></p><p></p><span style="font-size:64%">
+<span style="color:brown;">
+→&nbsp;&nbsp;&nbsp;&nbsp;Vanilla is a spice made from the fruit of certain tropical vine orchids.</span></span>
+<p></p></section>
+<section class="top">
+However, on many occasions, interpretation requires genuine intelligence, which presupposes the ability to interpret in context.<p></p><ul><li><img style="width:222px;float: right; padding-left: 15px;" src="Semantics_files/Desk.png" alt="Desk.png"><span style="color:brown;">"Can you get the little red book on the right stack on my desk?"</span><br>→&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:80%">which book?</span></li></ul>
+<span class="fragment ">
+<ul><li><span style="color:brown;">"The trophy would not fit in the suitcase because it was too big"</span><br>→&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:80%">what does "it" refer to?</span><br><span style="font-size:80%">(cf. Scott, T. (2020). <a href="https://www.youtube.com/watch?v=m3vIEKWrP9Q&amp;feature=youtu.be">The Sentences Computers Can’t Understand</a>)</span></li></ul></span></section>
+<section class="top">
+However, on many occasions, interpretation requires genuine intelligence.<p></p>&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<ul><li><img style="width:211px;float: right; padding-left: 15px;" src="Semantics_files/Galaxy.jpg" alt="Galaxy.jpg"><img style="width:211px;float: left; padding-right: 15px;" src="Semantics_files/Molecule.jpg" alt="Molecule.jpg"><span style="color:brown;">"A small galaxy"</span> <i>vs.</i> <span style="color:brown;">"A small molecule"</span> → <span style="font-size:80%">definitely</span><br><span style="font-size:80%">not the intersection with the set of small objects</span></li></ul>
+<br>
+<span class="fragment ">
+<ul><li><img style="width:222px;float: left; padding-right: 15px;" src="Semantics_files/Trees.png" alt="Trees.png"><img style="width:111px;float: left; padding-right: 15px;" src="Semantics_files/Keys.png" alt="Keys.png"><span style="color:brown;">"I lost my keys to the right of the tree."</span><br>→ <span style="font-size:80%">how far away from the tree? 1cm, 1km?</span></li></ul></span></section>
+<section class="top">
+However, on many occasions, interpretation requires genuine intelligence.<p></p>&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<ul><li><img style="width:333px;float: right; padding-left: 15px;" src="Semantics_files/Footsteps.jpg" alt="Footsteps.jpg"><span style="color:brown;">"He felt so lonely in this desert that he used to walk backwards sometimes to see footsteps in front of him."</span><br><span style="font-size:80%">(after Hortence Vlou)</span><br>→ <span style="font-size:80%">whose footsteps are we talking about?</span></li></ul></section>
+<section class="center">
+Procedural semantics computes meaning <span class="highlight">in context</span>. <p></p><span class="fragment ">
+One crude way to achieve meaning construction is to translate phrases into Prolog predicates, 
+<br>
+and then to execute the resulting Prolog program using a knowledge base.</span></section>
+<section class="center">
+<span style="font-size:64%">
+<table style="right;border: 1px solid #0C2340;background-color:lightblue;"><caption><i>Background knowledge</i></caption><tbody><tr>
+<td>book('Kritik der reinen Vernunft’, yellow, left)</td>
+</tr>
+<tr>
+<td>book('Des intelligences TRES artificielles’, white, right)</td>
+</tr>
+<tr>
+<td>book('On the origin of species’, beige, right)</td>
+</tr>
+<tr>
+<td>book('La serpe d'or’, white, left)</td>
+</tr>
+<tr>
+<td>book('The geometry of meaning’, white, right)</td>
+</tr>
+<tr>
+<td>book('Metaphors we live by’, red, right)</td>
+</tr></tbody></table></span><p></p>For example:
+<br>
+<span style="color:brown;">"the little red book on the right stack on my desk"</span>
+<br>
+<span class="xjlcode"><br><br><br><br>?- book(T, red, right).<br>&nbsp;&nbsp;&nbsp;&nbsp;T = 'Metaphors we live by'.</span>
+<div style="clear:right"></div></section>
+<section class="center">
+This Prolog-based solution is great, as it achieves interpretation in context.<p></p><span class="fragment ">
+However, it only works if we have convenient predicates that match words.</span>
+</section>
+<section class="center">
+The Prolog-based solution won’t work when<p></p><ul><li>the evaluation of predicates isn’t purely logical, but requires analog computation<br>(<i>e.g.</i> <span style="color:brown;">"small"</span>, or <span style="color:brown;">"to the right of the tree"</span>)</li></ul>
+<span class="fragment ">
+<ul><li>undertanding requires visualizing the scene<br>(<span style="color:brown;">"walk backwards to see footsteps"</span>)</li></ul></span>
+<span class="fragment ">
+<ul><li>interpretation depends on semantic constraints<br>(binding, aspect...)</li></ul></span></section>
+<section class="center">
+The present lab deals with the Prolog-based interpretation.<p></p>&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<span class="fragment ">
+<a href="https://www.youtube.com/watch?v=dhSY_ChdGvI"><img style="width:433px;float: right; padding-left: 15px;" src="Semantics_files/Echecs.jpg" alt="Echecs.jpg"></a>
+We will be able to interpret &nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<span style="color:brown;">"the pawn to the right of the white knight"</span> 
+<br>
+as meaning: 
+<br>
+<span class="xjlcode">pawn(black,(2,5))</span>
+<br>
+<span style="font-size:80%">(the black pawn at location (2,5))</span></span></section>
+<section class="center">
+In subsequent lectures and labs, 
+<br>
+we will consider <p></p><ul><li>the <i>contrast</i> operation and </li>
+<li>the rules of Aspect.</li></ul></section></div>
+<p></p><div style="position:relative;padding-top:44%;align:center;"><iframe title="AIAI Slideshow" src="slideshow_Procedural_Semantics.html" allowfullscreen="" style="position:absolute;top:0;left:15%;width:70%;height:100%;" frameborder="1">slideshow Procedural_Semantics</iframe></div>
+<br>
+The goal of the present lab work is to explore various ways to introduce
+ semantic calculus on top of syntactic processing. In particular, we 
+will illustrate the idea that semantic interpretation involves more than
+ structural translation and requires some context-dependent calculus, 
+according to what is called <i>procedural semantics</i>.
+For instance, we would like that a sentence like:
+<p style="text-align:center">
+<i>the child talks with the nice girl about the room</i></p>
+be interpreted, in an appropriate context, as:
+<p style="text-align:center">
+<span class="xjlcode"><br>talk(John, Ann, my_room)</span></p><p></p>In 
+what follows, we will consider the use of semantic features, and then 
+the possibility of interfacing syntax with reasoning and perception.<p></p><span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:96%" onclick="document.getElementById('H1').scrollIntoView();" value="• Procedural semantics"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Features structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with Prolog"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Adding a procedural component to semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Semantic contraints"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with perception"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• A word of conclusion"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Webography"><br></p></div><p></p></span><div id="H2"><h2>Features structures</h2></div>
+The grammar used here is built around DCG rules. If you are not yet familiar with DCG rules, go back to <a href="https://aicourse.r2.enst.fr/CANLP/tp_Parser_light.html">the lab work on basic syntactic parsing</a> before going any further. We will make use of
+<a href="https://aicourse.r2.enst.fr/CANLP/tp_Parser_light.html#FeatureStructures">feature structures</a>
+ as arguments of phrases. But we need more. We will build a semantic 
+representation that can be interpreted as a prolog predicate. For 
+instance, "Mary thinks of John" will be interpreted as <span class="xjlcode">think(Mary, John)</span>. To do so, we introduce a second slot in phrases, beside features, to host the predicate structure.<p></p>Lexical entries will be DCG rules like the following one, which is an amplification of <span class="xjlcode">v --&gt; [believes]</span>:<p></p><span class="xjlcode"><br><b>v</b>(<span style="color:green;">[gloss:believe,num:sing,pers:3,subj:dp(_), cpl:[cp(that)]]</span>, <span style="color:red;">believe(_,_)</span>, <span style="color:blue;">v(believe)</span>) <b>--&gt; [believes]</b>.</span><p></p>Note the three extra arguments in <span style="color:green;">green</span>, <span style="color:red;">red</span> and <span style="color:blue;">blue</span>. These three extra arguments also appear in rules. 
+<br>
+Here is the rule <span class="xjlcode">vp --&gt; v, dp</span>:<p></p><span class="xjlcode"><br>vp(<span style="color:green;">FV</span>,<span style="color:red;">PVP</span>,<span style="color:blue;">TVP</span>) --&gt; v(<span style="color:green;">FV</span>,<span style="color:red;">PV</span>,<span style="color:blue;">TV</span>), dp(<span style="color:green;">FDP</span>,<span style="color:red;">PDP</span>,<span style="color:blue;">TDP</span>), <br>&nbsp;&nbsp;&nbsp;&nbsp;{ % transitive verb, eg. 'like'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;att(<span style="color:green;">FV</span>, cpl, [dp(FDP)]),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link(_, <span style="color:red;">PV</span>,<span style="color:red;">PDP</span>,<span style="color:red;">PVP</span>),<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">TVP  = vp(TV,TDP)</span> }.</span><p></p>The above rule says that a verb phrase may consist of a verb followed by a determiner phrase: <i>likes the boy</i>.
+<br>
+The three extra arguments represent structures:
+<br>
+<ul><li><span style="color:green;"><span class="xjlcode">FV</span></span>:&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:green;">Feature structure</span> (here for verb phrase) that is used to check various forms of agreement.<br>For instance, the feature structure attached to the verb <i>believe</i> is <span style="color:green;"><span class="xjlcode">[gloss:believe,num:sing,pers:3,subj:dp(_), cpl:[cp(that)]]</span></span>.<br>(here, <span class="xjlcode">gloss</span> indicates a string that is used in the output display)</li>
+<li><span style="color:red;"><span class="xjlcode">PVP</span></span>:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;">Predicate</span> (here, predicate for verb phrase) which will be used to compute the interpretation.<br>For instance: <span style="color:red;"><span class="xjlcode">believe(_,_)</span></span></li>
+<li><span style="color:blue;"><span class="xjlcode">TVP</span></span>:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">Tree structure</span> for display (here for verb phrase).<br>For instance: <span style="color:blue;"><span class="xjlcode">v(believe)</span></span></li></ul>
+The part within {brackets} is Prolog code. 
+<br>
+- <span class="xjlcode">att</span> is used to get the value of a feature (here <span class="xjlcode">cpl</span> = complement) in the feature structure.
+<br>
+- <span class="xjlcode">link</span> is used to perform the semantic link between syntactically connected phrases (see below).<p></p>Note the presence of the <i>determiner phrase</i> <span class="xjlcode">dp</span>, which linguists recommend to use instead of <span class="xjlcode">np</span> (<span class="xjlcode">np</span> is now used to represent undetermined noun phrases, like <i>nice girl</i>, whereas <i>a nice girl</i> becomes a <span class="xjlcode">dp</span>).<p></p>
+The files used during this lab work are in <a href="https://aicourse.r2.enst.fr/CANLP/src/tp_sem.zip">tp_sem.zip</a>:
+<ul><li><span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/sem_main.pl">sem_main.pl</a></span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main program - contains predicate <span class="xjlcode">link</span></li>
+<li><span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/sem_Grammar.pl">sem_Grammar.pl</a></span>: grammar</li>
+<li><span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/sem_world.pl">sem_world.pl</a></span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;now empty - will contain domain knowledge</li>
+<li><span class="xjlcode"><a href="https://aicourse.r2.enst.fr/CANLP/src/sem_util.pl">sem_util.pl</a></span>:&nbsp;&nbsp;&nbsp;&nbsp;utility predicates (no need to dive into this)</li></ul>
+Install these four files in a directory. Execute <a href="https://aicourse.r2.enst.fr/CANLP/src/sem_main.pl"><span class="xjlcode">sem_main.pl</span></a> and type the predicate <span class="xjlcode">go</span>.<p></p><span class="xjlcode"><br>?- consult(sem_main).<br>true.&nbsp;&nbsp;&nbsp;&nbsp;<br>?- go.<br>sentence &gt; <span style="color:blue;">the nice girl likes the boy</span><br><br>[gloss:like,num:sing,pers:3,subj:dp([gloss:girl,num:sing]),cpl:[dp([gloss:boy,num:sing])]]<br></span>
+<span style="font-family:Courier;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__dp<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|__det&nbsp;:&nbsp;the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|__np<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__adj&nbsp;:&nbsp;nice<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__np<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__n&nbsp;:&nbsp;girl<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__vp<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__v&nbsp;:&nbsp;like<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__dp<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__det&nbsp;:&nbsp;the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__np<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__n&nbsp;:&nbsp;boy</span>
+<br>
+<div class="ignore">
+Our grammar accepts the two following sentences:
+<ul><li>the child sleeps</li>
+<li>the child sleeps</li>
+<li>*the room sleeps</li></ul>
+In order to discriminate between these two sentences, one may wish to 
+introduce a "semantic agreement" between the subject and the verb. 
+<br>
+To do this, introduce a new attribute, <span class="xjlcode">anim</span>, which may take two values: <span class="xjlcode">animate</span> and <span class="xjlcode">inanimate</span>. 
+You may change the lexical entries of <span class="xjlcode">sleep</span>, <span class="xjlcode">child</span> and <span class="xjlcode">room</span>, and the rule <span class="xjlcode">s --&gt; dp, vp.</span> to check for semantic agreement, so that <i>the child sleeps</i> be still accepted, while <i>*the room sleeps</i>  become incorrect. Since other words in the lexicon may not have the attribute anim in their structure, the predicate <span class="xjlcode">att</span> returns a variable when the attribute is absent. As a consequence, <i>the game sleeps</i> will still be accepted.
+<div id="Semantic_Agreement_0"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Semantic Agreement (0)</i></caption><tbody><tr>
+<td>
+Copy the new definitions of <span class="xjlcode">child</span> and <span class="xjlcode">sleep</span> here.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Semantic_Agreement_0" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<div id="Semantic_Agreement_1"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Semantic Agreement (1)</i></caption><tbody><tr>
+<td>
+Copy the new rule <span class="xjlcode">s --&gt; dp, vp.</span>.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Semantic_Agreement_1" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+Note that it would be better if <span class="xjlcode">sleep</span> assigned the attribute value <span class="xjlcode">animate</span> to its subject, but this would require recursive attributes (see advanced lab work).
+<div id="Semantic_Agreement_2"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Semantic Agreement (2)</i></caption><tbody><tr>
+<td>
+What kind of attributes do you think could be used to discard nonsense sentences like:
+<i>
+<ul><li>*the cat talks with the room about the cat</li>
+<li>*the room is in Mary</li></ul></i>
+What can you say about your solution?</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Semantic_Agreement_2" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p></div>
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:96%" onclick="document.getElementById('H1').scrollIntoView();" value="• Procedural semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Features structures"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with Prolog"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Adding a procedural component to semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Semantic contraints"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with perception"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• A word of conclusion"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Webography"><br></p></div><p></p></span><div id="H3"><h2>Interfacing NL with Prolog</h2></div>
+<img style="width:400px;float: right; padding-left: 15px;" src="Semantics_files/DreamBigGirl.png" alt="DreamBigGirl.png">
+Let’s say that in our context, <i>The nice girl</i> refers to <i>Ann</i>.
+ To get this interpretation, some inference steps might be needed 
+between words and meaning. Prolog seeems ideally suited to bridge the 
+gap between natural language expression and meaning. The idea consists 
+in representing the meaning of parsed sentences as Prolog programs that 
+may be executed. 
+For instance, we expect the interpretation of <i>the boy dreams of the nice girl</i> to be <span class="xjlcode">boy(X), girl(Y), nice(Y), dream(X, Y)</span> which, once executed, might end up as <span class="xjlcode">dream(john, ann)</span> if the programme is able to understand that <i>the nice girl</i> stands for <span class="xjlcode">ann</span>.<p></p>As it stands, the program provides a minimal semantic interpretation:
+<p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>?- go.<br>Sentence &gt; the boy dreams of the nice girl<br>Syntactically correct<br>[gloss:dream,num:sing,pers:3,subj:dp([gloss:boy,num:sing]),cpl:[pp(of)]]<br>. . .<br>---&gt; dream(_28336,_28338)&nbsp;&nbsp;&nbsp;&nbsp;</span></p><p></p>To get a better result, we need two additional mechanims.
+<ol><li>perform semantic linking between merging phrases (e.g. <span class="xjlcode">dream(X,Y)</span> and <span class="xjlcode">boy(Z)</span> should share a variable when connected)</li>
+<li>execute recognized predicates (e.g. <span class="xjlcode">boy(Z)</span> could return <span class="xjlcode">Z = john</span>).</li></ol>
+<div class="slideshow" id="Semantic_Link">
+<section class="center">
+<p style="text-align:center">
+<span class="highlight">
+<span style="font-size:80%">
+Cognitive Approach to NLP</span></span>
+</p><p></p>&nbsp;&nbsp;&nbsp;&nbsp;<p></p><p style="text-align:center">
+<span style="font-size:173%">
+Semantic Link</span></p><p></p>&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<p style="text-align:center"><span style="font-size:80%">&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+<p style="text-align:center"><span style="font-size:64%"><a href="http://teaching.dessalles.fr/CANLP">teaching.dessalles.fr/CANLP</a></span></p></section>
+<section class="center">
+In Prolog, shared variable establish an explicit link between predicates.
+<br>
+<span class="xjlcode"><br>boy(<span style="color:red;">X</span>), girl(<span style="color:blue;">Y</span>), dream(<span style="color:red;">X</span>,<span style="color:blue;">Y</span>)</span><p></p><span class="fragment ">
+If we execute the above line as a program, Prolog is able to instantiate the variables and to execute the resulting predicates:
+<br>
+<span class="xjlcode"><br><span style="font-size:80%">Continue to dream, john!</span><br><span style="color:red;">X</span> = john,<br><span style="color:blue;">Y</span> = ann</span></span></section>
+<section class="top">
+Natural language functions differently, as it has no explicit variables.
+<br>
+When two words get merged in a phrase,<p></p><span class="xjlcode">nice girl</span> 
+<br>
+. . .</section>
+<section class="top">
+Natural language functions differently, as it has no explicit variables.
+<br>
+When two words get merged in a phrase,<p></p><span class="xjlcode">nice girl</span><p></p>Prolog introduces predicates 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<p></p><span class="xjlcode">nice(X), girl(Y)</span></section>
+<section class="top">
+Natural language functions differently, as it has no explicit variables.
+<br>
+When two words get merged in a phrase,<p></p><span class="xjlcode">nice girl</span><p></p>Prolog introduces predicates
+<br>
+and then says that the variables are the same.<p></p><span class="xjlcode">nice(<span style="color:red;">X</span>), girl(<span style="color:red;">X</span>)</span></section>
+<section class="top">
+Natural language functions differently, as it has no explicit variables.
+<br>
+When two words get merged in a phrase,<p></p><span class="xjlcode">nice girl</span><p></p>&nbsp;&nbsp;&nbsp;&nbsp;<p></p>Natural Language seems to do the same, but <span style="color:blue;">implicitely</span>.</section>
+<section class="top">
+This implicit form of semantic link may lead to ambiguities.
+<br>
+Consider for example the phrase:<p></p><span class="xjlcode">The love of children</span><p></p><span class="fragment ">
+When translated into Prolog, it may give:<p></p><span class="xjlcode"><br>children(<span style="color:red;">X</span>), love(<span style="color:red;">X</span>, Y)</span></span><p></p><span class="fragment ">
+or:
+<br>
+<span class="xjlcode"><br>children(<span style="color:blue;">Y</span>), love(X, <span style="color:blue;">Y</span>)</span></span><p></p><span class="fragment ">
+We don’t know whether the children are the ones who are loving or who are loved.</span></section>
+<section class="top">
+Semantic link is not always ambiguous.<p></p>For instance, in active languages such as English or French 
+<br>
+(and contrary to <a href="https://en.wikipedia.org/wiki/Ergative%E2%80%93absolutive_alignment">ergative</a> language such as Hindi or Basque), 
+<br>
+verbs tend to share their first argument with their subject.<p></p><span class="xjlcode"><br>The girl talks to the boy</span><p></p><span class="fragment ">
+This sentence is not ambiguous:
+<br>
+<span class="xjlcode"><br>girl(<span style="color:red;">X</span>), talks(<span style="color:red;">X</span>,<span style="color:green;">Y</span>), boy(<span style="color:green;">Y</span>).</span><p></p>Here, argument sharing is constrained by syntax.</span></section>
+<br>
+</div>
+<p></p><div style="position:relative;padding-top:44%;align:center;"><iframe title="AIAI Slideshow" src="slideshow_Semantic_Link.html" allowfullscreen="" style="position:absolute;top:0;left:15%;width:70%;height:100%;" frameborder="1">slideshow Semantic_Link</iframe></div><p></p>Enable semantic link by commenting the catch-all line that comes first in the definition of <span class="xjlcode">link</span> in <span class="xjlcode">sem_main.pl</span>.
+ This will allow the clause coming next to it to be executed and so the 
+semantic linking to operate. Reload the program (you might type <b><span class="xjlcode">make.</span></b> at Prolog’s prompt) and run it anew.
+You should get the following outputs in turn:
+<p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>?- go.<br>Sentence &gt; the boy dreams of the nice girl<br><b>dream(girl,boy)</b><br>this sentence makes sense<br>type [;] to see alternatives...&nbsp;&nbsp;&nbsp;&nbsp;;<br><b>dream(boy,girl)</b></span></p><p></p>(note that you may disable the tree display by commenting the <span class="xjlcode">print_tree</span> line in <span class="xjlcode">dcg_parse</span>)<p></p>This
+ is better, but it is not yet the kind of interpretation we want. First,
+ we want to avoid the dreamer/dreamee symmetry. To fix this problem, we 
+have to restrict argument sharing during semantic linking.
+<br>
+To do so, we might instantiate the first argument of <span class="xjlcode">link</span> 
+in <span class="xjlcode">sem_Grammar.pl</span> whenever <span class="xjlcode">link</span>
+ is invoked.
+to indicate which argument of the first predicate should be shared.
+Replacing ‘_’ by 1 means that the first argument is shared; replacing it
+ by 2 means that the second argument is shared, and so on.
+<br>
+If you do it correctly, the sentence <i>the boy dreams of the nice girl</i> will now receive only one interpretation.
+&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<div id="Semantic_Linking_1"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Semantic Linking (1)</i></caption><tbody><tr>
+<td>
+Copy the new rule <span class="xjlcode">s --&gt; dp, vp.</span> here.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Semantic_Linking_1" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<div id="Semantic_Linking_2"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Semantic Linking (2)</i></caption><tbody><tr>
+<td>
+Copy the new rule <span class="xjlcode">vp --&gt; v, dp.</span> here.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Semantic_Linking_2" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<div id="Ditransitive_Verbs"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Ditransitive Verbs</i></caption><tbody><tr>
+<td>
+Add a rule in <span class="xjlcode">sem_Grammar.pl</span> for verbs that take two prepositional complements.
+<br>
+For instance, <i>Ann talks with Pat about Mary</i> should be successfully analyzed.
+<br>
+Copy the rule below.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Ditransitive_Verbs" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:96%" onclick="document.getElementById('H1').scrollIntoView();" value="• Procedural semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Features structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with Prolog"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Adding a procedural component to semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Semantic contraints"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with perception"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• A word of conclusion"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Webography"><br></p></div><p></p></span><div id="H4"><h2>Adding a procedural component to semantics</h2></div>
+To go one step further in the interpretation, the program should understand that <i>the nice girl</i> means <i>Ann</i>. To do this, we have to say to Prolog that <span class="xjlcode">Ann</span> is a girl and that she is nice.<p></p>Open <span class="xjlcode">sem_world.pl</span> and replace the existing lines by this knowledge:<p></p><span class="xjlcode"><br>girl('Ann').<br>boy('John').<br>nice('Ann').</span><p></p>Now we execute our interpreter again.
+<p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>?- go.<br>Sentence &gt;  the boy dreams of the nice girl<br>[gloss:dream,num:sing,pers:3,subj:dp([gloss:boy,num:sing]),cpl:[pp(of)]]<br>--&gt; dream(John,Ann)<br>this sentence makes sense</span></p><p></p>Not bad! Now, the program understands who we were talking about by saying <i>the nice girl</i>. 
+<br>
+You may get the meaning of phrases instead of full sentences:
+<p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>?- go(dp).<br>Phrase &gt;  the nice girl<br>Syntactically correct<br>[gloss:girl,num:sing]&nbsp;&nbsp;&nbsp;&nbsp;<br>girl(ann)<br>this sentence makes sense</span></p><p></p><img style="width:333px;float: right; padding-left: 15px;" src="Semantics_files/LexiconInterface.png" alt="LexiconInterface.png">
+Note that lexical entries are now duplicated, as a word such as ‘girl’ 
+now appears both in the grammar and in the ‘world’ definition. We may 
+think of phonetic forms such as <span class="xjlcode">girl</span> or <span class="xjlcode">nice</span> as being merely <i>associated</i> both with concepts in the "world" and with syntactic categories in the grammar.
+<br>
+<div id="Procedural_Semantics"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Procedural Semantics</i></caption><tbody><tr>
+<td>
+Augment the world so that <i>the child talks with the nice girl about the room</i> may be interpreted as:
+<br>
+<span class="xjlcode"><br>talk(John, Ann, my_room)<br>talk(Pat, Ann, my_room)</span><p></p>Insert the new clauses below.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Procedural_Semantics" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<div id="Procedural_Semantics_2"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Procedural Semantics (2)</i></caption><tbody><tr>
+<td>
+Introduce a new lexical entry <span class="xjlcode">daughter</span> in the grammar and augment the world so that <i>the child talks with the daughter of the nice girl about the room</i> may be interpreted as:
+<br>
+<span class="xjlcode"><br>talk(John, Lisa, my_room)</span><p></p>Insert the lexical entry and the new clauses below.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Procedural_Semantics_2" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+The "secret" of procedural semantics in this implementation lies in the call to <span class="xjlcode">execute</span>
+that appears at the end of <span class="xjlcode">link</span>. Its purpose is to try to make sense of the phrase that has just been recognized by executing it as a predicate of the world.
+<br>
+The current program does not "execute" to topmost phrase.
+Uncomment the "execute" line in <span class="xjlcode">dcg_parse</span> to trigger the interpretion of the final output predicate.
+Add the following line to <span class="xjlcode">sem_world.pl</span>:
+<br>
+ <span class="xjlcode">dream(_, _) :- writeln('\n***** Continue to dream! *****\n').</span>
+<br>
+and try again the sentence "the boy dreams of the nice girl".
+<br>
+<div id="H5"><h4>Suggestion</h4></div>
+You may note that as it is implemented, the system is underconstrained. 
+The semantic linking doesn’t know which argument to choose when linking <span class="xjlcode">talk('John',Y)</span> with <span class="xjlcode">daughter('Ann', 'Lisa')</span>. 
+<br>
+The problem comes from the fact that Prolog’s execution of <span class="xjlcode">daughter('Ann', X)</span> produces an instantiated predicate <span class="xjlcode">daughter('Ann', 'Lisa')</span> instead of merely <span class="xjlcode">'Lisa'</span>.
+<br>
+You may change the definition of ‘link’ to make it closer to a ‘merge’, that is, the output of <span class="xjlcode">daughter('Ann', X)</span> should be ‘Lisa’ rather than an instantiated predicate.
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:96%" onclick="document.getElementById('H1').scrollIntoView();" value="• Procedural semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Features structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with Prolog"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Adding a procedural component to semantics"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Semantic contraints"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with perception"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• A word of conclusion"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Webography"><br></p></div><p></p></span><div id="H6"><h2>Semantic contraints</h2></div>
+The current program accepts nonsense sentences like <i>the room talks with the child about Mary</i>.
+One solution to avoid this would be to introduce semantic features such as ‘animate’ to constrain matching.
+This solution is wrong for two reasons: 
+<ul><li>inflation of the number of features</li>
+<li>impossibility of nearly metaphorical expressions such as ‘a talking cat’, ‘talk with the parliament’, ‘we put our hope in Ann’.</li></ul>
+The solution adopted by procedural semantics is to transfer the ‘animate’ constraint to the world. 
+<div id="World_Constraints"><div class="exo"><table class="exo" style="width:100%;"><caption><i>World Constraints</i></caption><tbody><tr>
+<td>
+Define <span class="xjlcode">animate</span> by adding Prolog clauses to the world saying that
+an entity is <span class="xjlcode">animate</span> if it is a boy or if it is a girl.
+<br>
+Then add a predicate <span class="xjlcode">talk</span> to the world that checks whether the two first arguments comply with the constraint of being <span class="xjlcode">animate</span>.<p></p>Insert the new clauses below.
+Does the program now make a difference between:
+<br>
+- <i>the girl talks with the child about Mary</i>
+<br>
+- <i>the room talks with the child about Mary</i> ?</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:World_Constraints" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+It seems that we merely replaced static syntactic features by static clauses in a Prolog program.
+The point of procedural semantics is to separate what belongs to the grammar (<i>e.g.</i> agreement in number)
+from what belongs to semantics. The latter depends on the knowledge you have (<i>e.g.</i>
+ that Ann is nice while Mary is not)
+or even on perception, as when you ask for the book which is on top of 
+the right stack.
+It is normal to consider that this kind of processing should be 
+performed by programs, possibly sophisticated ones, rather than by the 
+grammar.
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:96%" onclick="document.getElementById('H1').scrollIntoView();" value="• Procedural semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Features structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with Prolog"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Adding a procedural component to semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Semantic contraints"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with perception"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• A word of conclusion"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Webography"><br></p></div><p></p></span><div id="H7"><h2>Interfacing NL with perception</h2></div>
+<a href="https://www.youtube.com/watch?v=dhSY_ChdGvI"><img style="width:333px;float: right; padding-left: 15px;" src="Semantics_files/Echecs.jpg" alt="Echecs.jpg"></a>
+Since we established a connection between NL and Prolog, we can deal with spatial relations, up to a point.
+Load the <a href="https://aicourse.r2.enst.fr/CANLP/src/sem_Chess.pl"><span class="xjlcode">sem_Chess.pl</span></a> program by adding the following line to <span class="xjlcode">sem_world.pl</span>:
+<br>
+<span class="xjlcode"><br>:- consult('sem_Chess.pl').</span><p></p>This program contains the location of chess pieces on the chessboard pictured on the right.
+Normally, your program should be able to interpret the following phrases:
+<br>
+<p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>?- go(dp).<br>Phrase &gt; the white knight<br> ...&gt; knight(white,(1,5))<br> |:<br> ...&gt; knight(white,(4,5))</span></p>
+<br>
+<p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>?- go.<br>Sentence &gt; the white knight is white<br> ...&gt; white(white)<br> |:<br> ...&gt; white(white)</span></p><p></p>but it should refuse the follwing sentence:
+<br>
+<p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>?- go.<br>Sentence &gt; the black knight is white<br>false.</span></p><p></p>Now add a definition for "right" in your grammar:
+<br>
+<p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>n([gloss:right, num:sing],right(_,_),n(right)) --&gt; [right].</span></p><p></p>
+and then look into <a href="https://aicourse.r2.enst.fr/CANLP/src/sem_Chess.pl"><span class="xjlcode">sem_Chess.pl</span></a> and correct the implementation of the predicate <span class="xjlcode">right</span>.
+You should get this kind of result:<p></p><p style="margin-left: 40px;margin-right: 40px;">
+<span class="xjlcode"><br>?-go(pp).<br>Phrase &gt; to the right of the white knight<br>...&gt; right((2,5),(1,5))<br>|:<br>...&gt; right((5,5),(4,5))<br><br><br>?-go(dp).<br>Phrase &gt; the pawn to the right of the white knight<br>...&gt; pawn(black,(2,5))</span></p>
+<div id="Chess"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Chess</i></caption><tbody><tr>
+<td>
+Paste the modified clause of <span class="xjlcode">right</span>.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_ProceduralSem:Chess" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_ProceduralSem" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<span style="font-size:80%">
+<ul><li>Note: there are limits to the current implementation. For instance, you will get wrong results by checking the <span class="xjlcode">dp</span>:
+ "the pawn to the right of the black pawn". As you can see, the semantic
+ link is sometimes established with the wrong argument of <span class="xjlcode">right(_,_)</span>. The problem comes from the fact that <span class="xjlcode">right(Loc)</span> should be a function rather than a predicate. This problem could be fixed by reimplementing <span class="xjlcode">execute</span>.</li></ul></span>
+<span style="float:right;"><p style="text-align:right"></p><div id="summary"><p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:96%" onclick="document.getElementById('H1').scrollIntoView();" value="• Procedural semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Features structures"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H3').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with Prolog"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H4').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Adding a procedural component to semantics"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H6').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Semantic contraints"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H7').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Interfacing NL with perception"><br><input type="button" style="border:none; color:green;font-weight:bold; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H8').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• A word of conclusion"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:77%" onclick="document.getElementById('H9').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Webography"><br></p></div><p></p></span><div id="H8"><h2>A word of conclusion</h2></div>
+Procedural semantics can solve many problems that feature semantics is unable to achieve.
+<br>
+We must remain aware of a strong limitation, however. Syntax-semantics 
+interfaces like the one illustrated in this lab work rely on the fact 
+that words can be matched to predicates. For instance, the lexical entry
+ <span class="xjlcode">believes</span> is matched to the predicate <span class="xjlcode">belive</span>. This presupposes that part of the interpretation relies on a <i>translation</i>
+ that uses a mental dictionary. The translation would merely associate 
+words to predicates. This solution is better than nothing, but it is 
+utterly simplistic from a cognitive point of view. A more realistic 
+solution would consist in building predicates ‘on the fly’. This will be
+ explained during the lectures.
+<div id="H9"><h2>Webography</h2></div>
+<ul><li><a href="http://hci.stanford.edu/winograd/shrdlu/">Overview of SHRDLU</a></li>
+<li><a href="http://maf.directory/misc/shrdlu.html">SHRDLU resurrection</a></li>
+<li><a href="http://dspace.mit.edu/handle/1721.1/7095">Terry Winograd’s PhD thesis</a></li>
+<li><a href="http://ling-blogs.bu.edu/lx390f17/hw8-shrdlu/">SHRDLU implementation with NlTk</a></li></ul>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<p></p>
+<br>
+<img style="width:100%;" src="Semantics_files/Line.jpg" alt="Line.jpg"><p></p> <b><a href="https://aicourse.r2.enst.fr/CANLP/CANLP.html#topics">Back to main page</a></b>
+ 
+</div></body></html>

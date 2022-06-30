@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html><input type="hidden" id="__yoroi_connector_api_injected_type" value="prod"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Telecom Paris - JL Dessalles - Artificial Intelligence</title>
+<link rel="icon" type="image/png" href="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/CANLP.png">
+<link rel="stylesheet" type="text/css" href="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/CANLP.css"></head><body><div style="background:white url(Images/Fond.png) repeat fixed;">
+<p></p><p></p><p></p><p></p><p></p><p></p><table style="width:100%;border: 0px solid #0C2340;"><caption><i></i></caption><tbody><tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.telecom-paris.fr/en/home"><img style="width:400px;float: left; padding-right: 15px;" src="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/TelecomParis_IPParis.png" alt="TelecomParis_IPParis.png"></a>
+</td>
+<td>
+<a href="https://www.telecom-paris.fr/en/home">Telecom Paris</a>
+<br>
+<a href="https://www.telecom-paris.fr/en/the-school/teaching-research-departments/computer-sciences-and-networks">Dep. Informatique &amp; Réseaux</a><p></p><a href="https://perso.telecom-paris.fr/jld/Images/Dessalles_2018.png"><img style="width:133px;float: left; padding-right: 15px;" src="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/Dessalles_2018.png" alt="Dessalles_2018.png"></a>
+<span style="font-family:Arial;">
+<a href="https://www.dessalles.fr/">
+<span style="font-size:120%">J-L. Dessalles</span></a></span>
+← <b><span style="font-size:80%">Home page</span></b><p></p><b>mai 2022</b></td>
+</tr></tbody></table>
+<img style="width:100%;height:5px;" src="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/Line.jpg" alt="5">
+<br>
+<a href="http://teaching.dessalles.fr/CANLP"><img style="width:200px;float: right; padding-left: 15px;" src="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/CANLP.png" alt="CANLP.png"></a>
+<br>
+<span style="font-size:173%">
+<b>
+<br>
+<a href="https://aicourse.r2.enst.fr/CANLP">Cognitive Approach to Natural Language Processing</a> (SD213)</b></span>
+<br>
+<span style="color:#0000FF;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:120%">→</span>&nbsp;&nbsp;&nbsp;&nbsp;<b><a href="https://aicourse.r2.enst.fr/">other AI courses</a></b></span>
+<br>
+<img style="width:100%;height:5px;" src="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/Line.jpg" alt="5"><p></p>
+<br>
+<div id="summary"><h3>Contents</h3>
+<p style="margin-left:2%;"><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:102%" onclick="document.getElementById('H1').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Grammar"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:102%" onclick="document.getElementById('H2').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Parsing"><br><input type="button" style="border:none; color:blue; background-color:#ffffff00;font-size:102%" onclick="document.getElementById('H5').scrollIntoView();" value="&nbsp;&nbsp;&nbsp;&nbsp;• Bottom-up Chart parsing"><br></p></div>
+<span style="font-size:144%">
+<span style="color:green;">
+This is the <u>advanced</u> lab on parsing.
+<br>
+I you need to refresh your memory on the subject, or if you never dealt with parsing before, you’re invited to visit the <a href="https://aicourse.r2.enst.fr/CANLP/tp_Parser_light.html">light version</a> first.</span></span><p></p><span style="background-color:#3388FF;padding:3px;border:3px"><span style="color:white;"><span style="font-size:120%">▶</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;You may read this short text on the history of NLP:
+<div id="VideoFile"><table style="border: 0px solid #0C2340;background-color:#FFF8A7;"><caption style="color:blue;font-style: italic"> &nbsp;&nbsp;&nbsp;see →</caption><tbody><tr>
+<td><a href="https://www.amacad.org/publication/human-language-understanding-reasoning" target="_blank"><img style="width:28px;" src="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/WebIcon.png" alt="WebIcon.png"></a>
+</td>
+<td>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.amacad.org/publication/human-language-understanding-reasoning" target="_blank"><b>Human Language Understanding &amp; Reasoning</b></a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr></tbody></table>
+</div>
+<br>
+<div id="H1"><h2>Grammar</h2></div>
+There is a trade-off between the expressiveness of grammar and the 
+efficiency of parsing: the more restricted the grammar formalism, the 
+easier the parsing. Context-free grammars provide a good trade-off. Here
+ is an example of a tiny grammar of English, expressed in <a href="https://en.wikipedia.org/wiki/Definite_clause_grammar">DCG</a>.<p></p><span class="xjlcode"><br>% partial elementary English grammar<br><br>% --- grammar<br>s --&gt; np, vp.<br>np --&gt; det, n.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Simple noun phrase<br>np --&gt; np, pp.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Noun phrase + prepositional phrase <br>vp --&gt; v.&nbsp;&nbsp;&nbsp;&nbsp;           % Verb phrase, intransitive verb<br>vp --&gt; v, np.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Verb phrase, verb + complement:  like X<br>vp --&gt; v, pp.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% Verb phrase, verb + indirect complement : think of X <br>vp --&gt; v, np, pp.&nbsp;&nbsp;&nbsp;&nbsp;% Verb phrase, verb + complement + indirect complement : give X to Y <br>vp --&gt; v, pp, pp.&nbsp;&nbsp;&nbsp;&nbsp;% Verb phrase, verb + indirect complement + indirect complement : talk to X about Y<br>pp --&gt; p, np.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% prepositional phrase<br><br>% -- lexicon<br>np --&gt; [kirk].<br>det --&gt; [the]; [my]; [her]; [his]; [a].<br>det --&gt; [some].<br>n --&gt; [dog]; [daughter]; [son]; [sister]; [aunt]; [neighbour]; [cousin].<br>v --&gt; [grumbles]; [likes]; [gives]; [talks]; [annoys]; [hates].<br>v --&gt; [cries].<br>p --&gt; [of]; [to].<br>p --&gt; [about].</span><p></p>These
+ clauses can be directly interpreted by Prolog to parse sentences. As it
+ stands, Prolog’s naive top-down parser is however not robust enough to 
+deal with natural language, as we will see.
+<div id="H2"><h2>Parsing</h2></div>
+The role of parsing is to analyse the syntactic structure of sentences. 
+The meaning and relevance of language crucially depends on syntactic 
+structure. For instance, the ambiguity of a sentence such as "She looks 
+at the boy with a telescope" (is she using a telescope, or does he hold a
+ telescope?) depends on whether the phrase "with a telescope" is 
+complement of "the boy" or of "looks". The following ambiguity is 
+generated by the parser we will be using here. It is due to the fact 
+that the small grammar given as input allows the verb "talk" to be used 
+with any proposition (here "to" instead of "about").
+<p style="text-align:center">
+</p><table style="border: 0px solid #0C2340;"><caption><i></i></caption><tbody><tr>
+<td>Syntactic interpretation 1
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+Syntactic interpretation 2 
+<br>
+<span style="font-size:80%">(accepting ‘talk...of')</span></td>
+</tr>
+<tr>
+<td><span class="xjlcode"><br> s<br>   |__np<br>   |  |__det : the<br>   |  |__n : cousin<br>   |__vp<br>&nbsp;&nbsp;&nbsp;&nbsp;  |__v : talks<br>&nbsp;&nbsp;&nbsp;&nbsp;  |__pp<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |__p : to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |__np<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__np<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|  |__det : the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|  |__n : neighbour<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__pp<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   |__p : of<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   |__np<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |__det : her<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |__n : sister</span>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+<span class="xjlcode"><br>s<br>   |__np<br>   |  |__det : the<br>   |  |__n : cousin<br>   |__vp<br>&nbsp;&nbsp;&nbsp;&nbsp;  |__v : talks<br>&nbsp;&nbsp;&nbsp;&nbsp;  |__pp<br>&nbsp;&nbsp;&nbsp;&nbsp;  |  |__p : to<br>&nbsp;&nbsp;&nbsp;&nbsp;  |  |__np<br>&nbsp;&nbsp;&nbsp;&nbsp;  |     |__det : the<br>&nbsp;&nbsp;&nbsp;&nbsp;  |     |__n : neighbour<br>&nbsp;&nbsp;&nbsp;&nbsp;  |__pp<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |__p : of<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |__np<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__det : her<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__n : sister</span></td>
+</tr></tbody></table><p></p><p></p>Parsing is a challenging operation, due not only to alternative syntactic structures (as in the above example), but also 
+to the fact that many words are ambiguous. For instance, "flies" can be a noun or a verb, "like" can be a preposition 
+or a verb, and so on. The accumulation of ambiguities generates combinatorial explosion, amplified by semantic 
+ambiguities (<i>e.g.</i> "fly" may mean "pilot" or merely "fly"). It is therefore crucial to have efficient parsing methods. The algorithm studied <a href="#CYK">below</a> is based on one of the best-known parsing methods. It parses sentences of <span class="xjlmath"><i>n</i></span> words in <span class="xjlmath"><i>O</i>(<i>n</i><sup>3</sup><i></i>)<i></i></span> steps. 
+<div id="H3"><h3>Top-down <i>vs.</i> bottom-up parsing</h3></div>
+<ul><li>Naive top-down parsing recursively applies rules <u>from left to right</u> until it matches categories with actual words in the sentence. It starts from <span class="xjlcode">s</span>, then tries to expand <span class="xjlcode">np</span> and <span class="xjlcode">vp</span>, then goes further into <span class="xjlcode">np</span> and finds <span class="xjlcode">det</span> that matches the word "the" at the front of the sentence.<br>Top-down parsing is baffled by rules such as <span class="xjlcode">np --&gt; np, pp.</span>, as it will endlessly re-apply it in the hope to match a <span class="xjlcode">np</span>. <p></p></li>
+<li>Naive bottom-up parsing starts from actual words present in the sentences and then recursively applies rules <u>from right to left</u> until it can eventually reach <span class="xjlcode">s</span>. It will not be disturbed by a left-recursive rule such as <span class="xjlcode">np --&gt; np, pp.</span> if the sentence can be parsed. If the sentence is incorrect, however (<i>e.g.</i> if it contains an unknown word), the bottom-up algorithm will loop endlessly as well.</li></ul>
+Moreover, naive top-down and bottom-up parsing methods are utterly 
+inefficient. They re-analyze the same phrases each time they try a new 
+rule. Inefficiency and endless looping are due to the fact that these 
+naive methods are amnesiac. Here is a partial trace of a top-down 
+analysis showing the amnesiac character of the method.<p></p><span class="xjlcode"><br>?- trace.<br>?- np([the,dog,of,the,neighbour,of,the,cousin],[]).<br>   <span style="color:green;">Call: (6) np([the, dog, of, the, neighbour, of, the, cousin], []) ? </span><br>   <span style="color:red;">Call: (7) det([the, dog, of, the, neighbour, of, the, cousin], _G6055) ? </span><br>   Exit: (7) det([the, dog, of, the, neighbour, of, the, cousin], [dog, of, the, neighbour, of, the, cousin]) ? <br>   Call: (7) n([dog, of, the, neighbour, of, the, cousin], []) ? <span style="color:green;">skip</span><br>   <b>Fail</b>: (7) n([dog, of, the, neighbour, of, the, cousin], []) ? <br>   <span style="color:green;">Redo: (6) np([the, dog, of, the, neighbour, of, the, cousin], []) ? </span><br>   <span style="color:red;">Call: (7) det([the, dog, of, the, neighbour, of, the, cousin], _G6055) ? </span><br>   Exit: (7) det([the, dog, of, the, neighbour, of, the, cousin], [dog, of, the, neighbour, of, the, cousin]) ? <br>   Call: (7) n([dog, of, the, neighbour, of, the, cousin], _G6055) ? <span style="color:green;">skip</span><br>   Exit: (7) n([dog, of, the, neighbour, of, the, cousin], [of, the, neighbour, of, the, cousin]) ? <br>   Call: (7) pp([of, the, neighbour, of, the, cousin], []) ? <br>   . . .</span><p></p>The parsing method studied <a href="#CYK">below</a> uses a smart method to record any partially recognized phrases. It thus avoids repeating the same analyses again and again.
+<div id="H4"><h3>Implementation</h3></div>
+<table style=""><caption><i></i></caption><tbody><tr>
+<td style="text-align:center;width:60%;background-color:#FFF8A7;border-right:1px solid black">If you prefer <span style="font-size:144%">Prolog</span>
+</td>
+<td style="text-align:center;background-color:#FFF8A7">
+If you prefer to use <span style="font-size:144%">Python</span></td>
+</tr>
+<tr>
+<td style="border-right:1px solid black">Prolog was from the start designed to process natural language.
+It’s certainly the most elegant way to implement parsing.<p></p>Prolog 
+is a unique programming language with the following main features:<p></p><ul><li>declarativity (= just provide constraints, not method)</li>
+<li>recursivity (see: recursivity)</li>
+<li>backtracking (= depth-first tree exploration)</li>
+<li>unification (= structure matching)</li></ul>
+These characteristics are valuable for natural language processing.<p></p>We
+ will be using SWI-Prolog. It is perhaps already present on the machine 
+you are using. Try to run it, usually through the command <span class="xjlcode">swipl</span>, sometimes <span class="xjlcode">pl</span>, or simply by clicking on a file with extension <span class="xjlcode">.pl</span>. Otherwise, download it from <a href="http://www.swi-prolog.org/Download.html">the SWI-Prolog website</a>. <p></p>When in prolog, you can load a program such as <span class="xjlcode">Grammar.pl</span> by typing <span class="xjlcode">['Grammar'].</span> (or sometimes by giving <span class="xjlcode">Grammar.pl</span> as argument to the <span class="xjlcode">swipl</span> command, or merely by clicking on <span class="xjlcode">Grammar.pl</span>).
+</td>
+<td style=";background-color:none">
+For practical purposes, you might prefer implementations in Python. Most examples used here have been transposed into Python.<p></p>Python can be downloaded for any platform from <a href="https://www.python.org/">python.org/</a>. No additional package is required (unless specified, as when we mention <a href="http://www.nltk.org/">NLTK</a>).<p></p>These program will often read the same grammar files as Prolog, such as <span class="xjlcode">Grammar.pl</span> (with a <span class="xjlcode">.pl</span> extension).</td>
+</tr></tbody></table>
+<div id="CYK"></div>
+<div id="H5"><h2>Bottom-up Chart parsing</h2></div>
+Chart parsing is a clever way to memorize partial results obtained 
+during parsing to avoid making the same computations endlessly. The 
+method chart parsing method presented here is a bottom-up procedure, 
+based on the <a href="https://en.wikipedia.org/wiki/CYK_algorithm">CYK algorithm</a>. For a corresponding top-down method, see <a href="https://en.wikipedia.org/wiki/Earley_parser">Earley’s algorithm</a>. These are among the most classical parsing methods.
+A description in French of <i>chart parsing</i> can be found in <a href="http://www.limsi.fr/Individu/anne/coursM2R/poly-parsing.pdf">this text</a> by <a href="https://perso.limsi.fr/yvon/mysite/mysite.php">François Yvon</a> (look at sections 12.2.2 &amp; 12.2.3).<p></p><i>Chart parsing</i>
+ consists in keeping and updating a table of well-formed phrases. The 
+table is used to remember recognized phrases and to propose hypotheses 
+about next phrases to be parsed.
+<br>
+Location <span class="xjlcode">(i,j)</span> in this table contains the list of phrases starting from word <span class="xjlcode">i</span> and extending to word <span class="xjlcode">j</span> that are already recognized or currently analyzed. The point of the algorithm is to build this table dynamically.<p></p>Rather than as a table, the current state of the algorithm is more conveniently depicted as a graph, where the <i>edges</i>
+ connect locations between words (see figure). An edge in this graph is 
+associated with a phrase which is about to be analysed, or is partially 
+or fully parsed. Once the phrase is parsed to the end, the edge is said 
+to be <i>inactive</i>. It is <i>active</i> otherwise. Edges are labelled
+ by ‘dotted rules’. A dot is used to mark the point that the analysis of
+ the phrase has reached for the edge. For instance, <span class="xjlcode">np&nbsp;→&nbsp;•det&nbsp;n</span> from node 1 to itself designates a candidate phrase that is not yet parsed. <span class="xjlcode">np&nbsp;→&nbsp;det&nbsp;•n</span>
+ from node 1 to node 2 marks the fact that the first word of the 
+sentence, "my", has been parsed as a determiner and that the analysis of
+ the candidate <span class="xjlcode">np</span> phrase has progressed one step further (as compared with the initial edge). Lastly, the presence of the inactive edge <span class="xjlcode">np&nbsp;→&nbsp;det&nbsp;n•</span> from node 1 to node 3 stores the fact that the three first words of the sentence have been parsed as an <span class="xjlcode">np</span>.<p></p><p style="text-align:center"><img style="width:500px;" src="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/ChartParsing1.png" alt="ChartParsing1.png"></p><p></p>Three main mechanisms  are used.<p></p><ul><li><b><span style="color:green;">lexical edge</span></b>: when a word is encountered that corresponds to some syntactic category <span class="xjlcode">x</span>, we add an inactive edge labelled with <span class="xjlcode">x</span> that spans over the word.</li>
+<li><b><span style="color:blue;">new hypothesis</span></b>: whenever the
+ first constituent of the right-hand side of a rule is recognized, the 
+edge corresponding to the rule is added with a dot in front position. 
+This corresponds to the bottom-up aspect of the algorithm.</li>
+<li><b><span style="color:red;">hypothesis extension</span></b>: 
+whenever an edge becomes inactive (which means that the corresponding 
+phrase is fully recognized), the dot gets moved one step to the right in
+ all edges in which the recognized phrase comes right after the dot, and
+ the corresponding new edges are added to the graph.</li></ul><p></p>Example :
+<ol><li><span style="color:green;">I encounter "my" : it appears as a <span class="xjlcode">det</span> in the grammar; I create an inactive edge <span class="xjlcode">(1,2)</span> labelled <span class="xjlcode">det&nbsp;→&nbsp;'my'•</span>.</span></li>
+<li><span style="color:blue;"><span class="xjlcode">det</span> corresponds to the ‘left corner’ of the rule <span class="xjlcode">np → det, n.</span>; we insert an active edge <span class="xjlcode">(1,1)</span>, labelled <span class="xjlcode">np&nbsp;→&nbsp;•det&nbsp;n</span>.</span></li>
+<li><span style="color:red;">an existing inactive edge labelled <span class="xjlcode">det</span> can extend the newly created edge; we insert a new active edge <span class="xjlcode">(1,2)</span> labelled <span class="xjlcode">np&nbsp;→&nbsp;det&nbsp;•n</span>; this edge is an extension of the previous one.</span></li>
+<li><span style="color:green;">moving forward, we encounter the word "dog"; we insert an inactive edge labelled <span class="xjlcode">n</span></span>.</li>
+<li><span style="color:red;">the newly created inactive edge can extend 
+the edge inserted in 3. This extension generates an inactive edge 
+corresponding to an <span class="xjlcode">np</span> phrase.</span></li>
+<li><span style="color:blue;">a new phrase has been parsed; new 
+hypotheses can be generated from rules where that phrase appears at 
+left-corner position (here <span class="xjlcode">s&nbsp;→&nbsp;•np&nbsp;vp</span> and <span class="xjlcode">np&nbsp;→&nbsp;•np&nbsp;pp</span>).</span></li>
+<li>&nbsp;. . .</li></ol>
+<div id="H6"><h3>Implementation</h3></div>
+<table style=""><caption><i></i></caption><tbody><tr>
+<td style="text-align:center;width:55%;background-color:#FFF8A7;border-right:1px solid black"><span style="font-size:120%">Prolog</span>
+</td>
+<td style="text-align:center;background-color:#FFF8A7">
+<span style="font-size:120%">Python</span></td>
+</tr>
+<tr>
+<td style="border-right:1px solid black">To build the graph dynamically, we use the Prolog database (using <span class="xjlcode">assert</span>). Edges are stored as:
+<br>
+<span class="xjlcode">edge(StartPos, EndPos, Cat, Done, Rest, T, Comment)</span>. 
+<br>
+Such an edge indicates that a candidate phrase of type ‘Cat’ may start from ‘StartPos’. The seven arguments are:<span style="font-size:80%"><a href="#Note"><sup>[Note]</sup></a></span>
+</td>
+<td style=";background-color:none">
+In Python, we define a class <span class="xjlcode">Edge</span> with the following slots: 
+<br>
+<span class="xjlcode">StartPos, EndPos, Cat, Done, Rest, Tree, Comment</span>. 
+<br>
+Then we define the class <span class="xjlcode">Chart</span> that mainly consists of a list of <span class="xjlcode">Edge</span>s.</td>
+</tr></tbody></table>
+<ul><li>StartPos:&nbsp;&nbsp;&nbsp;&nbsp;Position in input of the first word of the candidate phrase  (for instance <span class="xjlcode">1</span>),</li>
+<li>EndPos:&nbsp;&nbsp;&nbsp;&nbsp;Position in input of the last recognized word for the candidate phrase (for instance <span class="xjlcode">3</span>),</li>
+<li>Cat:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left hand side of the candidate rule (for instance <span class="xjlcode">np</span>),</li>
+<li>Done:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list of 
+categories in the right-hand side of the candidate rule that have been 
+recognized  (for instance <span class="xjlcode">[det]</span>),</li>
+<li>Rest:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list of 
+categories in the right-hand side of the candidate rule that are not yet
+ recognized  (for instance <span class="xjlcode">[n]</span>),</li>
+<li>T:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a
+ functional representation of the phrase that will then be used to 
+display the syntactic tree (for instance <span class="xjlcode">np(my,&nbsp;_)</span>),</li>
+<li>Comment: comment, for tracing purposes.</li></ul>
+When processing the preceding example, edges are created and produce this kind of trace:<p></p><span style="font-family:Courier;">
+<table style="border: 0px solid #0C2340;"><caption><i></i></caption><tbody><tr>
+<td><span style="color:green;">Lexical edge:</span></td>
+<td style="border-right:1px solid black">1-&gt;2</td>
+<td style="border-right:1px solid black">&nbsp;&nbsp;&nbsp;&nbsp;det --&gt; my  .</td>
+<td style="border-right:1px solid black">&nbsp;&nbsp;&nbsp;&nbsp;det(my)</td>
+</tr>
+<tr>
+<td><span style="color:blue;">Generating edge:</span></td>
+<td>1-&gt;1</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;np --&gt;  . det n</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;np</td>
+</tr>
+<tr>
+<td><span style="color:red;">Extending edge:</span></td>
+<td>1-&gt;2</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;np --&gt; det  . n</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;np(det(my))</td>
+</tr>
+<tr>
+<td><span style="color:green;">Lexical edge:</span></td>
+<td>2-&gt;3</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;n --&gt; dog  .</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;n(dog)</td>
+</tr>
+<tr>
+<td><span style="color:red;">Extending edge:</span></td>
+<td>1-&gt;3</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;np --&gt; det n  .</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;np(det(my),n(dog))</td>
+</tr>
+<tr>
+<td><span style="color:blue;">Generating edge:</span></td>
+<td>1-&gt;1</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;s --&gt;  . np vp</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;s</td>
+</tr>
+<tr>
+<td><span style="color:red;">Extending edge:</span></td>
+<td>1-&gt;3</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;s --&gt; np  . vp</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;s(np(det(my),n(dog)))</td>
+</tr>
+<tr>
+<td><span style="color:green;">Lexical edge:</span></td>
+<td>3-&gt;4</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;v --&gt; barks  .</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;v(barks)</td>
+</tr>
+<tr>
+<td><span style="color:blue;">Generating edge:</span></td>
+<td>3-&gt;3</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;vp --&gt;  . v</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;vp</td>
+</tr>
+<tr>
+<td><span style="color:blue;">Generating edge:</span></td>
+<td>3-&gt;3</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;vp --&gt;  . v np</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;vp</td>
+</tr>
+<tr>
+<td><span style="color:red;">Extending edge:</span></td>
+<td>3-&gt;4</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;vp --&gt; v  .</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;vp(v(barks))</td>
+</tr>
+<tr>
+<td><span style="color:red;">Extending edge:</span></td>
+<td>1-&gt;4</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;s --&gt; np vp  .</td>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;s(np(det(my),n(dog)),vp(v(barks)))</b></td>
+</tr>
+<tr>
+<td><span style="color:red;">Extending edge:</span></td>
+<td>3-&gt;4</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;vp --&gt; v  . np</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;vp(v(barks))</td>
+</tr></tbody></table></span>
+<br>
+A similar trace is obtained with the Python implementation.
+<br>
+<span style="font-family:Courier;">
+Analyzing&nbsp;('[the]’,&nbsp;’[dog]’,&nbsp;’[barks]')<br>&nbsp;&nbsp;&nbsp;Lexical&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;1&nbsp;&nbsp;det&nbsp;--&gt;&nbsp;[the].&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;det([the])<br>&nbsp;&nbsp;Generated&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;0&nbsp;&nbsp;np&nbsp;--&gt;&nbsp;.det&nbsp;n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;np<br>Extended-right&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;1&nbsp;&nbsp;np&nbsp;--&gt;&nbsp;det.n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;np(det([the]))<br>&nbsp;&nbsp;&nbsp;Lexical&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;n&nbsp;--&gt;&nbsp;[dog].&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n([dog])<br>Extended-right&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;np&nbsp;--&gt;&nbsp;det&nbsp;n.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;np(det([the]),n([dog]))<br>&nbsp;&nbsp;Generated&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;0&nbsp;&nbsp;s&nbsp;--&gt;&nbsp;.np&nbsp;vp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s<br>&nbsp;&nbsp;Generated&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;0&nbsp;&nbsp;np&nbsp;--&gt;&nbsp;.np&nbsp;pp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;np<br>Extended-right&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;s&nbsp;--&gt;&nbsp;np.vp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s(np(det([the]),n([dog])))<br>Extended-right&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;np&nbsp;--&gt;&nbsp;np.pp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;np(np(det([the]),n([dog])))<br>&nbsp;&nbsp;&nbsp;Lexical&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;---&gt;&nbsp;3&nbsp;&nbsp;v&nbsp;--&gt;&nbsp;[barks].&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v([barks])<br>&nbsp;&nbsp;Generated&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;vp&nbsp;--&gt;&nbsp;.v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vp<br>&nbsp;&nbsp;Generated&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;vp&nbsp;--&gt;&nbsp;.v&nbsp;np&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vp<br>&nbsp;&nbsp;Generated&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;vp&nbsp;--&gt;&nbsp;.v&nbsp;pp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vp<br>&nbsp;&nbsp;Generated&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;vp&nbsp;--&gt;&nbsp;.v&nbsp;np&nbsp;pp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vp<br>&nbsp;&nbsp;Generated&nbsp;&nbsp;&nbsp;&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;---&gt;&nbsp;2&nbsp;&nbsp;vp&nbsp;--&gt;&nbsp;.v&nbsp;pp&nbsp;pp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vp<br>Extended-right&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;---&gt;&nbsp;3&nbsp;&nbsp;vp&nbsp;--&gt;&nbsp;v.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vp(v([barks]))<br>Extended-right&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;---&gt;&nbsp;3&nbsp;&nbsp;s&nbsp;--&gt;&nbsp;np&nbsp;vp.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s(np(det([the]),n([dog])),vp(v([barks])))<br>Extended-right&nbsp;edge:&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;---&gt;&nbsp;3&nbsp;&nbsp;vp&nbsp;--&gt;&nbsp;v.np&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vp(v([barks]))</span><p></p><table style=""><caption><i></i></caption><tbody><tr>
+<td style="text-align:center;width:50%;background-color:#FFF8A7;border-right:1px solid black"><span style="font-size:120%">Prolog</span>
+</td>
+<td style="text-align:center;background-color:#FFF8A7">
+<span style="font-size:120%">Python</span></td>
+</tr>
+<tr>
+<td style="border-right:1px solid black">The program <a href="https://aicourse.r2.enst.fr/CANLP/src/syn_ChartParser.pl"><span class="xjlcode">syn_ChartParser.pl</span></a> provides a Prolog implementation of the parser. 
+<br>
+It uses <a href="https://aicourse.r2.enst.fr/CANLP/src/syn_util.pl"><span class="xjlcode">syn_util.pl</span></a> that provides input/output routines.
+The program reads a file containing the grammar (<i>e.g.</i> <span class="xjlcode">syn_Grammar.pl</span>) and converts the DCG rules such as <span class="xjlcode">np → det, n.</span> into predicate form <span class="xjlcode">rule(np, [det, n])</span>.
+<br>
+Execute <span class="xjlcode">ChartParser</span> using SWI-Prolog (ignore warnings at this point). 
+The program reads the file <span class="xjlcode">syn_Grammar.pl</span>) that contains the grammar and converts the DCG rules such as <span class="xjlcode">np → det, n.</span> into predicate form <span class="xjlcode">rule(np, [det, n])</span>.
+<br>
+Type <span class="xjlcode">ask('syn_Grammar.pl').</span> (or replace by 
+the file name of your grammar), then enter a sentence that should be 
+parsed by the grammar, such as: "the cousin hates her sister". 
+</td>
+<td style=";background-color:none">
+The Python implementation of chart parsing needs the following files:
+<ul><li><a href="https://aicourse.r2.enst.fr/CANLP/src/syn_ChartParser.txt" download="syn_ChartParser.py" target="_blank"><span class="xjlcode">syn_ChartParser.py</span></a></li>
+<li><a href="https://aicourse.r2.enst.fr/CANLP/src/syn_Grammar.pl"><span class="xjlcode">syn_Grammar.pl</span></a></li>
+<li><a href="https://aicourse.r2.enst.fr/CANLP/src/syn_Grammar.txt" download="syn_Grammar.py" target="_blank"><span class="xjlcode">syn_Grammar.py</span></a></li>
+<li><a href="https://aicourse.r2.enst.fr/CANLP/src/syn_util.txt" download="syn_util.py" target="_blank"><span class="xjlcode">syn_util.py</span></a></li></ul>
+The program reads the file <span class="xjlcode">syn_Grammar.pl</span>) that contains the grammar and converts the DCG rules into Python rules using the class <span class="xjlcode">Rule</span>.
+<br>
+Make sure that the trace level (set in the main procedure of <a href="https://aicourse.r2.enst.fr/CANLP/src/syn_ChartParser.txt" download="syn_ChartParser.py" target="_blank"><span class="xjlcode">syn_ChartParser.py</span></a>) is set to at least level 3.
+<br>
+You might now execute <span class="xjlcode">syn_ChartParser.py</span>. Try a sentence such as: "the cousin hates her sister".</td>
+</tr></tbody></table>
+<br>
+As you can observe, the program as it stands recognizes words and does nothing more than generating lexical edges.
+<br>
+To initialize the table, we generate inactive edges such as <span class="xjlcode">C&nbsp;→&nbsp;W•</span> for each word <span class="xjlcode">W</span> and each syntactic category <span class="xjlcode">C</span> that matches <span class="xjlcode">W</span>. <p></p><table style=""><caption><i></i></caption><tbody><tr>
+<td style="text-align:center;width:50%;background-color:#FFF8A7;border-right:1px solid black"><span style="font-size:120%">Prolog</span>
+</td>
+<td style="text-align:center;background-color:#FFF8A7">
+<span style="font-size:120%">Python</span></td>
+</tr>
+<tr>
+<td style="border-right:1px solid black">Lexical edges are created through <span class="xjlcode">add_lexical_edges</span>. Suitable categories for <span class="xjlcode">W</span> are easily found by calling <span class="xjlcode">rule(C, [W])</span>. <br>Examine <span class="xjlcode">add_lexical_edges</span>.
+ Observe that it fails right after having introduced a new edge, as a 
+way to force backtracking. This is a convenient way to explore all 
+categories associated with <span class="xjlcode">W</span> (this feat is made possible by the fact that the <span class="xjlcode">assert</span> operation used in <span class="xjlcode">add_edge</span> isn’t cancelled when backtracking). Examine <span class="xjlcode">add_lexical_edges</span>, as it will be useful to complete the program.<p>
+</p></td>
+<td style=";background-color:none">
+Lexical edges are created at the begining of the method <span class="xjlcode">Parse</span> in the class <span class="xjlcode">BUChartParser</span>
+(which stands for "bottom-up chart parser").
+It scans the grammar to find rules whose RHS (right-hand side) matches words present in the sentence.</td>
+</tr></tbody></table>
+<br>
+The <span class="xjlcode">add_edge</span> predicate or procedure inserts new edges (through <span class="xjlcode">assert</span>
+ in Prolog) into the table. The recursive calls it contains (in both 
+implementations) will trigger a chain reaction that will create all 
+edges that can be generated from the currently added edge.
+<br>
+<span class="xjlcode">add_edge</span> contains (for now) only two 
+functionning cases. 
+At this point, the parser gets terminals (words), generates lexical 
+edges, and that’s it. We must add mechanisms to generate and extend 
+hypotheses.
+<div id="H7"><h3>Generating edges</h3></div>
+Each time a phrase has been recognized, <i>i.e.</i> whenever an inactive edge has been recorded, <span class="xjlcode">add_edge</span> should also insert new active edges that start from that new edge. For instance, the edges <span class="xjlcode">s&nbsp;→&nbsp;•np&nbsp;vp</span> and <span class="xjlcode">np&nbsp;→&nbsp;•np&nbsp;pp</span> should be generated as soon as <span class="xjlcode">np&nbsp;→&nbsp;det&nbsp;n•</span> becomes inactive and is recorded.
+<br>
+<div id="ParserEdgeGeneration"><div class="exo"><table class="exo" style="width:100%;"><caption><i>ParserEdgeGeneration</i></caption><tbody><tr>
+<td>
+We want to generate new edges (i.e. the ‘self-node edges’, that is, <span style="color:blue;">the blue lines</span> in the graph). Complete the corresponding missing part of <span class="xjlcode">add_edge</span> (the one with the "Generation" comment) and paste the missing line below.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="text" name="tp_Parser:ParserEdgeGeneration" size="80" style="font-family:inherit;font-size:inherit"><p></p><button type="submit" value="tp_Parser" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<br>
+Run the program and verify that it correctly generates appropriate edges sur as <span class="xjlcode">the cousin hates the neighbour of her sister</span>.
+<div id="H8"><h3>Extending edges</h3></div>
+The next thing to do when an inactive edge for category <span class="xjlcode">X</span> has been added is to extend all active edges which are waiting for <span class="xjlcode">X</span>, <i>i.e.</i> for which <span class="xjlcode">X</span> is the first element in the <span class="xjlcode">Rest</span>
+ list. Note that this operation may lead to new edges becoming inactive,
+ thus trigerring a chain reaction with new edge generations and 
+extensions.<p></p><div id="ParserEdgeExtension"><div class="exo"><table class="exo" style="width:100%;"><caption><i>ParserEdgeExtension</i></caption><tbody><tr>
+<td>
+Complete the corresponding missing part of <span class="xjlcode">add_edge</span> (the one with the "Extension" comment) and paste the missing line below.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="text" name="tp_Parser:ParserEdgeExtension" size="80" style="font-family:inherit;font-size:inherit"><p></p><button type="submit" value="tp_Parser" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<br>
+Run the program and verify that it is now able to parse simple sentences.
+<div id="H9"><h3>Extending current active edge</h3></div>
+A this point, we did not yet fully use the power of memory to accelerate parsing.
+When a phrase is partially recognized, <i>i.e.</i> when an active edge <span class="xjlmath"><i>E</i></span> is added, we want to look among existing inactive edges if by chance another edge <span class="xjlmath"><i>E’</i></span> could extend <span class="xjlmath"><i>E</i></span>, in which case we can generate <span class="xjlmath"><i>E</i>+<i>E’</i></span> right away. This will spare us the burden of extending <span class="xjlmath"><i>E</i></span> step by step.<p></p>To complete our parser accordingly, we need to check whether the newly added edge can be extended.<p></p><div id="ParserCurrentEdgeExtension"><div class="exo"><table class="exo" style="width:100%;"><caption><i>ParserCurrentEdgeExtension</i></caption><tbody><tr>
+<td>
+Add yet another possibility to <span class="xjlcode">add_edge</span> (in
+ Prolog, just before the catch-all clause) to extend the current edge. 
+You want to scan all inactive edges to see if one of them would match 
+the first element in the current edge’s list of waiting elements. If so,
+ you can add an edge that spans one more phrase than the current edge.
+Note that this new definition of <span class="xjlcode">add_edge</span> more or less mirrors the preceding one.
+Paste the line below.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<input type="text" name="tp_Parser:ParserCurrentEdgeExtension" size="80" style="font-family:inherit;font-size:inherit"><p></p><button type="submit" value="tp_Parser" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<div id="H10"><h3>Tests</h3></div>
+The parser is now complete. The mere fact of adding lexical edges 
+triggers a chain reaction that generates all edges that can possibly be 
+added.
+ 
+Note that <span class="xjlcode">parse</span> checks for the existence of an edge labelled <span class="xjlcode">s</span> spanning the entire input sentence. If such an edge does exist, the sentence is correct with regard to the grammar. <p></p>Test
+ the program (you may cancel tracing or reduce trace level). You may try
+ syntactically ambiguous sentences and see if the program outputs the 
+expected syntactic trees.<p></p>Naive top-down and bottom-up algorithms 
+were unsatisfactory, not only because of their inefficiency, but also 
+because they were prone to endless looping.<p></p><div id="Experiments_1"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Experiments (1)</i></caption><tbody><tr>
+<td>
+Experiment with the algorithm. Try to parse a sentence containing an unknown word. What do we get?</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_Parser:Experiments_1" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_Parser" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p><div id="Experiments_2"><div class="exo"><table class="exo" style="width:100%;"><caption><i>Experiments (2)</i></caption><tbody><tr>
+<td>
+Insert a faulty rule such as <span class="xjlcode">np --&gt; np.</span> into the grammar. Describe possible problems.</td>
+</tr></tbody></table><p></p><form action="https://aicourse.r2.enst.fr/_" enctype="application/x-www-form-urlencoded" accept-charset="utf-8" method="post"><input type="hidden" name="Cours" value="CANLP">
+<textarea name="tp_Parser:Experiments_2" cols="80" rows="4"></textarea><p></p><button type="submit" value="tp_Parser" name="RecentAnswers" style="font-size: 10px; background-color: #FFFFFF">My recent answers</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="Send" value="Reponse" style="background-color: #FFD077">Send this answer</button></form>
+</div></div><p></p>
+<br>
+<hr>
+<div id="H11"><h3>Bibliography</h3></div>
+<ul><li>Blackburn &amp; Striegnitz. <a href="http://cs.union.edu/~striegnk/courses/nlp-with-prolog/html/">Natural Language Processing Techniques in Prolog</a></li>
+<li>Cavar D. (2005). <a href="http://damir.cavar.me/pycl/Code/Charty.py.html">Charty: a small incremental bottom-up chart parser for context free grammars</a></li>
+<li>Luger (2009). AI Algorithms, Data Structures and Idioms in Prolog, Lisp, and Java. See <a href="https://www.cs.unm.edu/~luger/ai-final2/CH8_Natural%20Language%20Processing%20in%20Prolog.pdf">Chapter 8</a>.</li>
+<li>Savoy. <a href="http://members.unine.ch/jacques.savoy/lectures/SemCL/PrologNLPCL.pdf">Introduction to PROLOG for NLP applications</a> (slides).</li></ul>
+<br>
+<div id="H12"><h3>Notes</h3></div>
+<span style="font-size:80%"><div id="Note">[Note] 
+In SWI-Prolog, <span class="xjlcode">edge</span> may need to be declared as a dynamic predicate to be asserted:
+<span class="xjlcode"><br>:- dynamic(edge/7).)</span></div></span><p></p>
+<img style="width:100%;" src="Telecom%20Paris%20-%20JL%20Dessalles%20-%20Artificial%20Intelligence_files/Line.jpg" alt="Line.jpg"><p></p> <b><a href="https://aicourse.r2.enst.fr/CANLP/CANLP.html#topics">Back to main page</a></b>
+ 
+</div></body></html>
